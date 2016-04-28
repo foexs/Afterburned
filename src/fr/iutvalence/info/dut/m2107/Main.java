@@ -6,5 +6,10 @@ public class Main {
 		// TODO Auto-generated method stub
 
 	}
+	public void LaunchMainMenu() {
+		// TODO - implement Main.LaunchMainMenu
+		throw new UnsupportedOperationException();
+	}
+
 
 }
