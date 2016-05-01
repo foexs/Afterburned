@@ -10,8 +10,8 @@ public enum Color {
 	
 	int colorID;
 	
-	private Color(int id)
+	private Color(int code)
 	{
-		this.colorID=id;
+		this.colorID=code;
 	}
 }
