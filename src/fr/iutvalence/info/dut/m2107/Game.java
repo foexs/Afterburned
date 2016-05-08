@@ -4,5 +4,11 @@ public class Game {
 
 	private int score;
 	private Environment environment;
+	
+	public Game(int score, Environment environment)
+	{
+		this.score=score;
+		this.environment=environment;
+	}
 
 }

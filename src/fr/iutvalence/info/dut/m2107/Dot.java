@@ -10,4 +10,16 @@ public class Dot {
 		this.x=x1;
 		this.y=y1;
 	}
+	
+	public String modx(int X)
+	{
+		this.x=X;
+		return "done";
+	}
+	
+	public String mody(int Y)
+	{
+		this.y=Y;
+		return "done";
+	}
 }
