@@ -8,11 +8,24 @@ public class Main {
 		 */
 		WeaponSet ws = new WeaponSet();
 		ws.getWeaponFromFile(CONFIG_FILE);
-		System.out.println(ws.toString());
 		
+		/**
+		 * Load hulls
+		 */
+		HullSet hs = new HullSet();
+		hs.getHullFromFile(CONFIG_FILE);
+		
+		/**
+		 * Load items
+		 */
 		ItemSet is = new ItemSet();
 		is.getItemFromFile(CONFIG_FILE);
 		System.out.println(is.toString());
+		
+		/**
+		 * Load enemies
+		 */
+		
 		
 		// TODO Auto-generated method stub
 

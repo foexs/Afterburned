@@ -1,14 +1,14 @@
 package fr.iutvalence.info.dut.m2107;
 
-public class Entity {
+public interface Entity {
 
 	private int health;
-	private Hitbox entityPosition;
+	private Hitbox hitbox;
 	
 	public Entity(int health, Hitbox entityPosition)
 	{
 		this.health=health;
-		this.entityPosition=entityPosition;
+		this.hitbox=entityPosition;
 	}
 	
 	public String modHealth(int hp)
@@ -19,7 +19,7 @@ public class Entity {
 
 	public String modHitbox(Hitbox newhb)
 	{
-		this.entityPosition=newhb;
+		this.hitbox=newhb;
 		return "done";
 	}
 }
