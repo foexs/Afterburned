@@ -10,9 +10,9 @@ public class Main {
 		ws.getWeaponFromFile(CONFIG_FILE);
 		System.out.println(ws.toString());
 		
-		HullSet hs = new HullSet();
-		hs.getHullFromFile(CONFIG_FILE);
-		System.out.println(hs.toString());
+		ItemSet is = new ItemSet();
+		is.getItemFromFile(CONFIG_FILE);
+		System.out.println(is.toString());
 		
 		// TODO Auto-generated method stub
 
