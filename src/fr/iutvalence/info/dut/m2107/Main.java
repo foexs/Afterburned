@@ -5,6 +5,7 @@ public class Main {
 	public static void main(String[] args) {
 		WeaponSet ws = new WeaponSet();
 		ws.getWeaponFromFile(CONFIG_FILE);
+		System.out.println(ws.toString());
 		// TODO Auto-generated method stub
 
 	}
