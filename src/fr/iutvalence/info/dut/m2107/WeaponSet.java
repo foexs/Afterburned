@@ -16,19 +16,28 @@ public class WeaponSet {
 		Scanner scan = null;
 		try {
 			try {
-				boolean record=false;
+				boolean recordColor=false;
+				boolean recordDamage=false;
+
 				scan = new Scanner(new File(filename));
 				while (scan.hasNextLine()) {
 					String line="";
 					for (char cc : scan.next().toCharArray()) {
 						line= line+cc;
 					}
-					if (record){
-						Integer.parseInt(line);
-						record=false;
+					if (recordColor){
+						System.out.println(Integer.parseInt(line));
+						recordColor=false;
 					}
-					if (line.equalsIgnoreCase(WEAPON_ID)){
-						
+					if (recordDamage){
+						System.out.println(Integer.parseInt(line));
+						recordDamage=false;
+					}
+					if (line.equalsIgnoreCase("weaponcolor")){
+						recordColor=true;
+					}
+					if (line.equalsIgnoreCase("weapondamage")){
+						recordDamage=true;
 					}
 					System.out.println(line);
 					}
@@ -40,26 +49,6 @@ public class WeaponSet {
 				e.printStackTrace();
 				System.out.println("File not found");
 				}
-		/**
-		File file = new File(filename);
-		try {
-			FileInputStream fileInput = new FileInputStream(file);
-			fileInput.read(1)
-			String cc = new String(" ");
-			while (cc != "")
-			{
-				
-			}
-			try {
-				fileInput.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (FileNotFoundException e) {
-			System.out.println("File not found\n");
-			e.printStackTrace();
 		}
-	**/}
 
 }
