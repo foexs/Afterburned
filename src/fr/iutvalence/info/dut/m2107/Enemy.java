@@ -10,5 +10,25 @@ public class Enemy {
 		this.enemyId=enemyId;
 		this.size=size;
 	}
+	
+	//getters and setters
+
+	public int getEnemyId() {
+		return enemyId;
+	}
+
+	public void setEnemyId(int enemyId) {
+		this.enemyId = enemyId;
+	}
+
+	public Hitbox getSize() {
+		return size;
+	}
+
+	public void setSize(Hitbox size) {
+		this.size = size;
+	}
+	
+	
 
 }
