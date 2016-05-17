@@ -18,15 +18,14 @@ public class Ship {
 	{
 		//Set the default values and constructors
 		//Weapon must have an ID!
-		currentWeapon = new Weapon(null, 1);
-		currentHull = new Hull();
-		shipPosition = new Dot(1,1);
-		baseDamage = 1;		
-		healthPoint = 1;
-		angle = 0;
-		shipSize = 1;
-		shipHitBox = shipSize(shipSize);
-		
+		this.currentWeapon = currentWeapon;
+		this.currentHull = currentHull;
+		this.shipPosition = shipPosition;
+		this.baseDamage = baseDamage;		
+		this.healthPoint = healthPoint;
+		this.angle = angle;
+		this.shipSize = shipSize;
+		this.shipHitBox=getHitBox(shipSize);
 	}
 	//
 	//methods
@@ -59,14 +58,13 @@ public class Ship {
 	
 	//getters and setters
 	
-	public Hitbox shipSize(int sizeMult)
+	public Hitbox getHitBox(int sizeMult)
 	{
-		new Hitbox(sizeMult,sizeMult,sizeMult,sizeMult);
-		return shipHitBox;
+		return new Hitbox(sizeMult,sizeMult,sizeMult,sizeMult);
 	}
 	
 	public Weapon getCurrentWeapon() {
-		return currentWeapon;
+		return this.currentWeapon;
 	}
 
 	public void setCurrentWeapon(Weapon currentWeapon) {
@@ -74,7 +72,7 @@ public class Ship {
 	}
 
 	public Hull getCurrentHull() {
-		return currentHull;
+		return this.currentHull;
 	}
 
 	public void setCurrentHull(Hull currentHull) {
@@ -83,7 +81,7 @@ public class Ship {
 
 
 	public int getBaseDamage() {
-		return baseDamage;
+		return this.baseDamage;
 	}
 
 	public void setBaseDamage(int baseDamage) {
@@ -91,7 +89,7 @@ public class Ship {
 	}
 
 	public int getHealthPoint() {
-		return healthPoint;
+		return this.healthPoint;
 	}
 
 	public void setHealthPoint(int healthPoint) {
@@ -99,7 +97,7 @@ public class Ship {
 	}
 
 	public float getAngle() {
-		return angle;
+		return this.angle;
 	}
 
 	public void setAngle(float angle) {
