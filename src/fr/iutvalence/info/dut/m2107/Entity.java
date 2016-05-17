@@ -1,25 +1,20 @@
 package fr.iutvalence.info.dut.m2107;
 
-public interface Entity {
-
+public class Entity {
+	
+	private int size;
 	private int health;
-	private Hitbox hitbox;
+	private Dot position;
 	
-	public Entity(int health, Hitbox entityPosition)
-	{
-		this.health=health;
-		this.hitbox=entityPosition;
+	public int getSize() {
+		return size;
 	}
 	
-	public String modHealth(int hp)
-	{
-		this.health=hp;
-		return "done";
+	public Dot getPosition(){
+		return this.position;
 	}
-
-	public String modHitbox(Hitbox newhb)
-	{
-		this.hitbox=newhb;
-		return "done";
+	
+	public int getHealth(){
+		return this.health;
 	}
 }

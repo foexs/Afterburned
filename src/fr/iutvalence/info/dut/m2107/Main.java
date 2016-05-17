@@ -20,12 +20,14 @@ public class Main {
 		 */
 		ItemSet is = new ItemSet();
 		is.getItemFromFile(CONFIG_FILE);
-		System.out.println(is.toString());
 		
 		/**
 		 * Load enemies
 		 */
-		
+		EnemySet es = new EnemySet();
+		es.getEnnemyFromFile(CONFIG_FILE);
+		System.out.println(es.toString());
+
 		
 		// TODO Auto-generated method stub
 

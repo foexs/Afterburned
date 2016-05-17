@@ -6,23 +6,26 @@ import java.util.Scanner;
 
 public class ItemSet {
 
-	public ItemSet() {
-	
-	}
-
 	public static int maxSetSize=99;
 	
-	private Item[] items=new Item[maxSetSize];
+	private final Item[] items=new Item[maxSetSize];
 	private int damageIncrease=0;
 	private int healthIncrease=0;
 	private int size=5;
 	private boolean bomb=false;
 	
 
+	/**
+	 * Fill the item list with info in the configuration file
+	 * @param filename is the configuration file's name
+	 */
 	void getItemFromFile(String filename){
 		Scanner scan = null;
 		try {
 			try {
+				/**
+				 * if the record is true, the next line is the value to get
+				 */
 				boolean recordDamageIncrease=false;
 				boolean recordHealthIncrease=false;
 				boolean recordSize=false;
@@ -31,9 +34,7 @@ public class ItemSet {
 				scan = new Scanner(new File(filename));
 				
 				while (scan.hasNextLine()) {
-					
-					
-					
+
 					String line="";
 					for (char cc : scan.next().toCharArray()) {
 						line= line+cc;
@@ -83,6 +84,10 @@ public class ItemSet {
 				System.out.println("File not found");
 				}
 		}
+	
+	/**
+	 * Display the list of Items available
+	 */
 	public String toString(){
 		String s="";
 		for(int j=0;items[j]!=null;j++){
