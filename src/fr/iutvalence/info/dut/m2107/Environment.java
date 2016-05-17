@@ -6,6 +6,7 @@ public enum Environment {
 	sunbelt,
 	orbit,
 	emptySpace;
+	
 	//Nebula
 	int fogLevel;
 	//asteroidField
