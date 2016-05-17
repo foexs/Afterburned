@@ -10,5 +10,16 @@ public class Entity {
 		this.health=health;
 		this.entityPosition=entityPosition;
 	}
+	
+	public String modHealth(int hp)
+	{
+		this.health=hp;
+		return "done";
+	}
 
+	public String modHitbox(Hitbox newhb)
+	{
+		this.entityPosition=newhb;
+		return "done";
+	}
 }
