@@ -8,7 +8,7 @@ public class EnemySet {
 
 	public static int maxSetSize=99;
 	
-	private final Enemy[] enemies=new Enemy[maxSetSize];
+	public final Enemy[] enemies=new Enemy[maxSetSize];
 	private int damage=0;
 	private int health=0;
 	private int size=5;

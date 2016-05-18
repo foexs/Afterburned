@@ -8,7 +8,7 @@ public class HullSet {
 
 	public static int maxSetSize=99;
 	
-	private Hull[] hulls=new Hull[maxSetSize];
+	public final Hull[] hulls=new Hull[maxSetSize];
 	
 	void getHullFromFile(String filename){
 		Scanner scan = null;

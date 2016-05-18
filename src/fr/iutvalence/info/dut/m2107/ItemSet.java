@@ -8,7 +8,7 @@ public class ItemSet {
 
 	public static int maxSetSize=99;
 	
-	private final Item[] items=new Item[maxSetSize];
+	public final Item[] items=new Item[maxSetSize];
 	private int damageIncrease=0;
 	private int healthIncrease=0;
 	private int size=5;

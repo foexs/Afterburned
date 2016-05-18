@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class WeaponSet {
 	public static int maxSetSize=99;
 	
-	private Weapon[] weapons=new Weapon[maxSetSize];
+	public final Weapon[] weapons=new Weapon[maxSetSize];
 	void getWeaponFromFile(String filename){
 		Scanner scan = null;
 		try {
