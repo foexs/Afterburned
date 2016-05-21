@@ -1,0 +1,3 @@
+http://www.cs.bsu.edu/homepages/pvg/misc/slick_eclipse_tutorial.php
+
+When it says download of copy a file, don't do it, they are already in the project
