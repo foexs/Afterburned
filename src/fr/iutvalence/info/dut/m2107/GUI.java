@@ -11,7 +11,7 @@ import org.newdawn.slick.*;
 public class GUI extends BasicGame {
 		public GameContainer container;
 	    public GUI() {
-	        super("Lesson 1 :: WindowGame");
+	        super("Afterburned");
 	    }
 
 	    @Override
@@ -47,7 +47,7 @@ public class GUI extends BasicGame {
 	    }
 
 	public static void main(String[] args) throws SlickException {
-		new AppGameContainer(new GUI(), 640, 480, false).start();
+		new AppGameContainer(new GUI(), 1024, 768, false).start();
 	}
 
 }
