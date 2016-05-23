@@ -21,7 +21,7 @@ public class HullSet {
 				scan = new Scanner(new File(filename));
 				
 				int protection=1;
-				Color color=Color.black;
+				Color color=Color.grey;
 				
 				while (scan.hasNextLine()) {
 					

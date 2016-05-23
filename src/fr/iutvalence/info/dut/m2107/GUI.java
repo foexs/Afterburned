@@ -32,6 +32,18 @@ public class GUI extends BasicGame {
 	        if (Input.KEY_ESCAPE == key) {
 	            container.exit();
 	        }
+	        if (Input.KEY_F11== key){
+	        	try{
+        			if (container.isFullscreen())
+        					container.setFullscreen(false);	
+	        		else
+	        			container.setFullscreen(true);
+	        	}
+        		catch (SlickException e)
+        		{
+        		
+        		}
+	        }
 	    }
 
 	public static void main(String[] args) throws SlickException {

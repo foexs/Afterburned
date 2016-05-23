@@ -13,7 +13,7 @@ public class EnemySet {
 	private int health=0;
 	private int size=5;
 	private int speed=2;
-	private Color color=Color.black;
+	private Color color=Color.grey;
 	
 
 	/**

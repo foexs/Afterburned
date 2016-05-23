@@ -20,7 +20,7 @@ public class WeaponSet {
 				scan = new Scanner(new File(filename));
 				
 				int damage=1;
-				Color color=Color.black;
+				Color color=Color.grey;
 				
 				while (scan.hasNextLine()) {
 					
