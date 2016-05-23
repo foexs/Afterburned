@@ -9,7 +9,7 @@ public enum Color {
 	green(0x00ff00),
 	blue(0x0000ff),
 	gold(0xffd400),
-	black(0),
+	grey(0xbbbbbb),
 	white(0xffffff);
 	
 	/**
