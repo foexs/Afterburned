@@ -51,15 +51,20 @@ public class MainMenu {
 		System.out.println(this.getClass()+" right key pressed");
 	}
 	public void leftKeyPressed(){
+		if (weaponSelected){
+			if (currentWeapon<=0){
+				this.currentWeapon=ws.weapons.length-1;
+			}else{
+				this.currentWeapon--;
+			}	
+		}
+		else{
+			
+		}
 		System.out.println(this.getClass()+" left key pressed");
 	}
 
-	public void upKeyPressed() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void downKeyPressed() {
+	public void upDownKeyPressed() {
 		// TODO Auto-generated method stub
 		
 	}

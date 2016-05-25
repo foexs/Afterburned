@@ -12,9 +12,7 @@ public class GUI extends BasicGame {
 	
 		public Image backgroundGame;
 		
-		public final static Image backgroundMenu;
-		
-		backgroundMenu = new Image("ihm/background menu_1.png");
+		public final String backgroundMenu = ("ihm/background menu_1.png");
 		
 		public static GameContainer container;
 		/**
@@ -54,7 +52,7 @@ public class GUI extends BasicGame {
 	    	else
 	    	{
 	    		
-	    		g.drawImage(backgroundMenu, 0, 0);
+	    		g.drawImage(new Image (backgroundMenu), 0, 0);
 	    	}
 	    	
 	    }
@@ -65,8 +63,7 @@ public class GUI extends BasicGame {
 	    }
 	    
 	    @Override
-	    public void keyReleased(int key, char c){
-	    	/*
+	    public void keyReleased(int key, char c){/*
 	    	 *General keyReleased 
 	    	 */
 	        if (Input.KEY_ESCAPE == key) {
@@ -110,7 +107,7 @@ public class GUI extends BasicGame {
 	        		game.upKeyPressed();
 	        	}
 	        	else{
-	        		menu.upKeyPressed();
+	        		menu.upDownKeyPressed();
 	        	}
 	
 			}
@@ -120,7 +117,7 @@ public class GUI extends BasicGame {
 	        		game.downKeyPressed();
 	        	}
 	        	else{
-	        		menu.downKeyPressed();
+	        		menu.upDownKeyPressed();
 	        	}
 	        }
 			
