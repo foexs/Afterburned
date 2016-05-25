@@ -36,6 +36,7 @@ public class GUI extends BasicGame {
 	    public void init(GameContainer container) throws SlickException {
 	        GUI.container = container;
 	        this.menu=new MainMenu();
+	        currentEnvironment = Environment.emptySpace;
 	        this.game=new Game(currentEnvironment);
 	       
 	        
@@ -46,12 +47,11 @@ public class GUI extends BasicGame {
 	    	
 	    	if (this.playing)
 	    	{
-	    		this.backgroundGame = new Image("");
+	    		g.drawImage(new Image(currentEnvironment.backgroundPath), 0, 0);
 	    	}
 	    	
 	    	else
 	    	{
-	    		
 	    		g.drawImage(new Image (backgroundMenu), 0, 0);
 	    	}
 	    	
@@ -126,7 +126,8 @@ public class GUI extends BasicGame {
 	        		game.enterKeyPressed();
 	        	}
 	        	else{
-	        		menu.enterKeyPressed();
+	        		this.playing=true;
+	        		
 	        	}
 	        }
 			
