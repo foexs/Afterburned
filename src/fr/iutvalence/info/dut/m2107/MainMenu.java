@@ -8,6 +8,7 @@ public class MainMenu {
 	public int currentHull;
 	public ItemSet is;
 	public EnemySet es;
+	public boolean weaponSelected;
 	
 	
 	public MainMenu(){
@@ -37,6 +38,16 @@ public class MainMenu {
 	}
 	
 	public void rightKeyPressed(){
+		if (weaponSelected){
+			if (currentWeapon>=ws.weapons.length-1){
+				this.currentWeapon=0;
+			}else{
+				this.currentWeapon++;
+			}	
+		}
+		else{
+			
+		}
 		System.out.println(this.getClass()+" right key pressed");
 	}
 	public void leftKeyPressed(){
