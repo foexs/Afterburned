@@ -10,6 +10,12 @@ import org.newdawn.slick.*;
  */
 public class GUI extends BasicGame {
 	
+		public Image backgroundGame;
+		
+		public final static Image backgroundMenu;
+		
+		backgroundMenu = new Image("ihm/background menu_1.png");
+		
 		public static GameContainer container;
 		/**
 		 * Contains all setup and parameters, can display itself too
@@ -33,16 +39,22 @@ public class GUI extends BasicGame {
 	        GUI.container = container;
 	        this.menu=new MainMenu();
 	        this.game=new Game(currentEnvironment);
+	       
+	        
 	    }
 
 	    @Override
 	    public void render(GameContainer container, Graphics g) throws SlickException {
-	    	if (this.playing){
 	    	
+	    	if (this.playing)
+	    	{
+	    		this.backgroundGame = new Image("");
 	    	}
 	    	
-	    	else{
+	    	else
+	    	{
 	    		
+	    		g.drawImage(backgroundMenu, 0, 0);
 	    	}
 	    	
 	    }
