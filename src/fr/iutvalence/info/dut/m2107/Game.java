@@ -5,9 +5,9 @@ public class Game {
 	private int score;
 	private Environment environment;
 	
-	public Game(int score, Environment environment)
+	public Game(Environment environment)
 	{
-		this.score=score;
+		this.score=0;
 		this.environment=environment;
 	}
 
@@ -26,6 +26,28 @@ public class Game {
 
 	public void setEnvironment(Environment environment) {
 		this.environment = environment;
+	}
+	
+	public void rightKeyPressed(){
+		System.out.println(this.getClass()+" right key pressed");
+	}
+	public void leftKeyPressed(){
+		System.out.println(this.getClass()+" left key pressed");
+	}
+
+	public void upKeyPressed() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void downKeyPressed() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void enterKeyPressed() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	
