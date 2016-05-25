@@ -24,8 +24,6 @@ public class WeaponSet {
 				
 				while (scan.hasNextLine()) {
 					
-					
-					
 					String line="";
 					for (char cc : scan.next().toCharArray()) {
 						line= line+cc;
