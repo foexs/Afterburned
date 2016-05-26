@@ -12,6 +12,8 @@ public class GUI extends BasicGame {
 	
 		public static final int DEFAULT_HEIGHT=768;
 		public static final int DEFAULT_WIDTH=1024;
+		public static final int LINE_SIZE=20;
+		
 	
 	
 		public Image backgroundGame;
@@ -23,7 +25,6 @@ public class GUI extends BasicGame {
 		 * Contains all setup and parameters, can display itself too
 		 */
 		Game game;
-		Environment currentEnvironment;
 		MainMenu menu;
 		
 		/**
@@ -40,7 +41,6 @@ public class GUI extends BasicGame {
 	    public void init(GameContainer container) throws SlickException {
 	        GUI.container = container;
 	        this.menu=new MainMenu();
-	        currentEnvironment = Environment.emptySpace;
 	        this.game=new Game();	       
 	        
 	    }
@@ -50,15 +50,17 @@ public class GUI extends BasicGame {
 	    	
 	    	if (this.playing)
 	    	{
-	    		g.drawImage(new Image(currentEnvironment.getBackgroundPath()), 0, 0);
+	    		g.drawImage(new Image(menu.currentEnvironment.getBackgroundPath()), 0, 0);
 	    	}
 	    	
 	    	else
 	    	{
 	    		g.drawImage(new Image (backgroundMenu), 0, 0);
-	    		g.drawString("Weapon: "+menu.currentWeapon,DEFAULT_WIDTH/2 , DEFAULT_HEIGHT/3);
+	    		g.drawString("Weapon: "+menu.currentWeapon,DEFAULT_WIDTH/2 , DEFAULT_HEIGHT/3+LINE_SIZE*1);
 	    		
-	    		g.drawString("Hull: "+menu.currentHull,DEFAULT_WIDTH/2 , DEFAULT_HEIGHT/3+20);
+	    		g.drawString("Hull: "+menu.currentHull,DEFAULT_WIDTH/2 , DEFAULT_HEIGHT/3+LINE_SIZE*2);
+	    		
+	    		g.drawString("Environment: "+menu.currentEnvironment.name(),DEFAULT_WIDTH/2, DEFAULT_HEIGHT/3+LINE_SIZE*3);
 	    		
 	    	}
 	    	
@@ -114,7 +116,7 @@ public class GUI extends BasicGame {
 	        		game.upKeyPressed();
 	        	}
 	        	else{
-	        		menu.upDownKeyPressed();
+	        		menu.upKeyPressed();
 	        	}
 	
 			}
@@ -124,7 +126,7 @@ public class GUI extends BasicGame {
 	        		game.downKeyPressed();
 	        	}
 	        	else{
-	        		menu.upDownKeyPressed();
+	        		menu.downKeyPressed();
 	        	}
 	        }
 			

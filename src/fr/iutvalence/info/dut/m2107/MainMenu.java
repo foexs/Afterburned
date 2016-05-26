@@ -8,7 +8,8 @@ public class MainMenu {
 	public int currentHull;
 	public ItemSet is;
 	public EnemySet es;
-	public boolean weaponSelected;
+	public Selection selection;
+	public Environment currentEnvironment;
 	
 	
 	public MainMenu(){
@@ -35,50 +36,94 @@ public class MainMenu {
 		 */
 		es = new EnemySet();
 		es.getEnnemyFromFile(CONFIG_FILE);
+		/**
+		 * set default cursor position
+		 */
+		selection=Selection.weapon;
+		
+		this.currentEnvironment=Environment.emptySpace;
 	}
 	
 	public void rightKeyPressed(){
-		
-		if (weaponSelected){
+		switch(this.selection){
+		case weapon:
 			if (currentWeapon>=ws.weapons.size()-1){
 				this.currentWeapon=0;
 			}else{
 				this.currentWeapon++;
 			}	
-		}
-		
-		else{
+			break;
+		case hull:
 			if (this.currentHull>=hs.hulls.size()-1){
 				this.currentHull=0;
 			}else{
 				this.currentHull++;
 			}
+			break;
+		case environment:
+			try {
+				currentEnvironment=Environment.values()[currentEnvironment.ordinal()+1];
+				}catch(ArrayIndexOutOfBoundsException e)
+			{
+					//Do nothing
+			}
+			break;
 		}
 		System.out.println(this.getClass()+" right key pressed");
 	}
 	public void leftKeyPressed(){
-		
-		if (this.weaponSelected){
+		switch(this.selection){
+		case weapon:
 			if (this.currentWeapon<=0){
 				this.currentWeapon=this.ws.weapons.size()-1;
 			}else{
 				this.currentWeapon--;
-			}	
-		}
-		
-		else{
+			}
+		break;
+		case hull:
 			if (this.currentHull<=0){
 				this.currentHull=this.hs.hulls.size()-1;
 			}else{
 				this.currentHull--;
 			}
+		break;
+		case environment:
+			try {
+				currentEnvironment=Environment.values()[currentEnvironment.ordinal()-1];
+				}catch(ArrayIndexOutOfBoundsException e)
+			{
+					//Do nothing
+			}
+			break;
 		}
-		
 		System.out.println(this.getClass()+" left key pressed");
 	}
 
-	public void upDownKeyPressed() {
-		weaponSelected=!weaponSelected;
+	public void downKeyPressed() {
+		switch(this.selection){
+		case weapon:
+			this.selection=Selection.hull;
+			break;
+		case hull:
+			this.selection=Selection.environment;
+			break;
+		case environment:
+			this.selection=Selection.weapon;
+			break;
+		}
+	}
+	public void upKeyPressed() {
+		switch(this.selection){
+		case weapon:
+			this.selection=Selection.environment;
+			break;
+		case hull:
+			this.selection=Selection.weapon;
+			break;
+		case environment:
+			this.selection=Selection.hull;
+			break;
+		}
 	}
 
 	public void enterKeyPressed() {
