@@ -21,26 +21,26 @@ public class MainMenu {
 		/**
 		 * Load hulls
 		 */
-		HullSet hs = new HullSet();
+		hs = new HullSet();
 		hs.getHullFromFile(CONFIG_FILE);
 		currentHull=0;
 		/**
 		 * Load items
 		 */
-		ItemSet is = new ItemSet();
+		is = new ItemSet();
 		is.getItemFromFile(CONFIG_FILE);
 		
 		/**
 		 * Load enemies
 		 */
-		EnemySet es = new EnemySet();
+		es = new EnemySet();
 		es.getEnnemyFromFile(CONFIG_FILE);
 	}
 	
 	public void rightKeyPressed(){
 		
 		if (weaponSelected){
-			if (currentWeapon>=ws.weapons.size()){
+			if (currentWeapon>=ws.weapons.size()-1){
 				this.currentWeapon=0;
 			}else{
 				this.currentWeapon++;
@@ -48,7 +48,7 @@ public class MainMenu {
 		}
 		
 		else{
-			if (this.currentHull>=hs.hulls.size()){
+			if (this.currentHull>=hs.hulls.size()-1){
 				this.currentHull=0;
 			}else{
 				this.currentHull++;

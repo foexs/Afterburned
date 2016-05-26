@@ -57,7 +57,7 @@ public class GUI extends BasicGame {
 	    	else
 	    	{
 	    		g.drawImage(new Image (backgroundMenu), 0, 0);
-	    		g.drawString(menu.ws.weapons.size()+", Weapon: "+menu.currentWeapon,DEFAULT_WIDTH/2 , DEFAULT_HEIGHT/3);
+	    		g.drawString("Weapon: "+menu.currentWeapon,DEFAULT_WIDTH/2 , DEFAULT_HEIGHT/3);
 	    		
 	    		g.drawString("Hull: "+menu.currentHull,DEFAULT_WIDTH/2 , DEFAULT_HEIGHT/3+20);
 	    		
