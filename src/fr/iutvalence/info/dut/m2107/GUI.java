@@ -10,6 +10,10 @@ import org.newdawn.slick.*;
  */
 public class GUI extends BasicGame {
 	
+		public static final int DEFAULT_HEIGHT=768;
+		public static final int DEFAULT_WIDTH=1024;
+	
+	
 		public Image backgroundGame;
 		
 		public final String backgroundMenu = ("ihm/background menu_1.png");
@@ -53,6 +57,10 @@ public class GUI extends BasicGame {
 	    	else
 	    	{
 	    		g.drawImage(new Image (backgroundMenu), 0, 0);
+	    		g.drawString(menu.ws.weapons.size()+", Weapon: "+menu.currentWeapon,DEFAULT_WIDTH/2 , DEFAULT_HEIGHT/3);
+	    		
+	    		g.drawString("Hull: "+menu.currentHull,DEFAULT_WIDTH/2 , DEFAULT_HEIGHT/3+20);
+	    		
 	    	}
 	    	
 	    }
@@ -134,7 +142,7 @@ public class GUI extends BasicGame {
 			
 	    }
 	public static void main(String[] args) throws SlickException {
-		new AppGameContainer(new GUI(), 1024, 768, false).start();
+		new AppGameContainer(new GUI(), DEFAULT_WIDTH, DEFAULT_HEIGHT, false).start();
 	}
 
 }

@@ -2,13 +2,14 @@ package fr.iutvalence.info.dut.m2107;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ItemSet {
 
-	public static int maxSetSize=99;
+	public List items=new LinkedList();
 	
-	public final Item[] items=new Item[maxSetSize];
 	private int damageIncrease=0;
 	private int healthIncrease=0;
 	private int size=5;
@@ -67,7 +68,7 @@ public class ItemSet {
 					}
 					if (line.equalsIgnoreCase(";")){
 						
-						items[i]=new Item(this.size,this.healthIncrease,this.damageIncrease,this.bomb);
+						items.add(new Item(this.size,this.healthIncrease,this.damageIncrease,this.bomb));
 						bomb=false;
 						damageIncrease=0;
 						healthIncrease=0;
@@ -90,8 +91,8 @@ public class ItemSet {
 	 */
 	public String toString(){
 		String s="";
-		for(int j=0;items[j]!=null;j++){
-			s=s+"\nItem "+j+":\nDamage Increase= "+items[j].getBaseDamageLevel()+"\nHealth Restore= "+items[j].getHealthRestoreLevel()+"\nIs a bomb ="+items[j].isBomb()+"\nSize ="+items[j].getSize();
+		for(int j=0;items.get(j)!=null;j++){
+			s=s+"\nItem "+j+":\nDamage Increase= "+((Item) items.get(j)).getBaseDamageLevel()+"\nHealth Restore= "+((Item) items.get(j)).getHealthRestoreLevel()+"\nIs a bomb ="+((Item) items.get(j)).isBomb()+"\nSize ="+((Item) items.get(j)).getSize();
 		}
 		return s;
 		

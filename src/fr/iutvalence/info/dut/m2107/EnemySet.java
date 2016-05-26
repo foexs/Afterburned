@@ -2,13 +2,14 @@ package fr.iutvalence.info.dut.m2107;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class EnemySet {
 
-	public static int maxSetSize=99;
+	public List enemies=new LinkedList();
 	
-	public final Enemy[] enemies=new Enemy[maxSetSize];
 	private int damage=0;
 	private int health=0;
 	private int size=5;
@@ -78,7 +79,7 @@ public class EnemySet {
 						recordColor=true;
 					}
 					if (line.equalsIgnoreCase("]")){
-						enemies[i]=new Enemy(this.speed,this.size,this.health,this.damage,this.color);
+						enemies.add(new Enemy(this.speed,this.size,this.health,this.damage,this.color));
 						i++;
 						}
 					}
@@ -97,8 +98,8 @@ public class EnemySet {
 	 */
 	public String toString(){
 		String s="";
-		for(int j=0;enemies[j]!=null;j++){
-			s=s+"\nEnemy "+j+":\nDamage = "+enemies[j].getDamage()+"\nHealth = "+enemies[j].getHealth()+"\nSpeed ="+enemies[j].getSpeed()+"\nSize ="+enemies[j].getSize()+"\nColor ="+enemies[j].getColor();
+		for(int j=0;enemies.get(j)!=null;j++){
+			s=s+"\nEnemy "+j+":\nDamage = "+((Enemy) enemies.get(j)).getDamage()+"\nHealth = "+((Enemy) enemies.get(j)).getHealth()+"\nSpeed ="+((Enemy) enemies.get(j)).getSpeed()+"\nSize ="+((Enemy) enemies.get(j)).getSize()+"\nColor ="+((Enemy) enemies.get(j)).getColor();
 		}
 		return s;
 		

@@ -38,35 +38,47 @@ public class MainMenu {
 	}
 	
 	public void rightKeyPressed(){
+		
 		if (weaponSelected){
-			if (currentWeapon>=ws.weapons.length-1){
+			if (currentWeapon>=ws.weapons.size()){
 				this.currentWeapon=0;
 			}else{
 				this.currentWeapon++;
 			}	
 		}
+		
 		else{
-			
+			if (this.currentHull>=hs.hulls.size()){
+				this.currentHull=0;
+			}else{
+				this.currentHull++;
+			}
 		}
 		System.out.println(this.getClass()+" right key pressed");
 	}
 	public void leftKeyPressed(){
-		if (weaponSelected){
-			if (currentWeapon<=0){
-				this.currentWeapon=ws.weapons.length-1;
+		
+		if (this.weaponSelected){
+			if (this.currentWeapon<=0){
+				this.currentWeapon=this.ws.weapons.size()-1;
 			}else{
 				this.currentWeapon--;
 			}	
 		}
+		
 		else{
-			
+			if (this.currentHull<=0){
+				this.currentHull=this.hs.hulls.size()-1;
+			}else{
+				this.currentHull--;
+			}
 		}
+		
 		System.out.println(this.getClass()+" left key pressed");
 	}
 
 	public void upDownKeyPressed() {
-		// TODO Auto-generated method stub
-		
+		weaponSelected=!weaponSelected;
 	}
 
 	public void enterKeyPressed() {

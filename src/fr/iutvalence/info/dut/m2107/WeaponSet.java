@@ -3,12 +3,15 @@ package fr.iutvalence.info.dut.m2107;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
 
 
 public class WeaponSet {
-	public static int maxSetSize=99;
+
+	public List weapons=new LinkedList();
 	
-	public final Weapon[] weapons=new Weapon[maxSetSize];
 	void getWeaponFromFile(String filename){
 		Scanner scan = null;
 		try {
@@ -45,7 +48,7 @@ public class WeaponSet {
 					}
 					if (line.equalsIgnoreCase("}")){
 						
-						weapons[i]=new Weapon(color, damage);
+						weapons.add(new Weapon(color, damage));
 						
 						i++;
 					}
@@ -61,8 +64,8 @@ public class WeaponSet {
 		}
 	public String toString(){
 		String s="";
-		for(int j=0;weapons[j]!=null;j++){
-			s=s+"\nWeapon "+j+":\nDamage= "+weapons[j].getDamageLevel()+"\nColor="+weapons[j].getWeaponColor();
+		for(int j=0;weapons.get(j)!=null;j++){
+			s=s+"\nWeapon "+j+":\nDamage= "+((Weapon) weapons.get(j)).getDamageLevel()+"\nColor="+((Weapon) weapons.get(j)).getWeaponColor();
 		}
 		return s;
 		

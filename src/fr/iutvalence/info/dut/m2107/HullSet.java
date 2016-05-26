@@ -3,12 +3,14 @@ package fr.iutvalence.info.dut.m2107;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
+
 
 public class HullSet {
-
-	public static int maxSetSize=99;
 	
-	public final Hull[] hulls=new Hull[maxSetSize];
+	public List hulls=new LinkedList();
 	
 	void getHullFromFile(String filename){
 		Scanner scan = null;
@@ -46,7 +48,7 @@ public class HullSet {
 					}
 					if (line.equalsIgnoreCase("}")){
 						
-						hulls[i]=new Hull(color, protection);
+						hulls.add(new Hull(color, protection));
 						
 						i++;
 					}
@@ -62,8 +64,8 @@ public class HullSet {
 		}
 	public String toString(){
 		String s="";
-		for(int j=0;hulls[j]!=null;j++){
-			s=s+"\nHull "+j+":\nProtection= "+hulls[j].getProtectionLevel()+"\nColor="+hulls[j].getHullColor();
+		for(int j=0;hulls.get(j)!=null;j++){
+			s=s+"\nHull "+j+":\nProtection= "+((Hull) hulls.get(j)).getProtectionLevel()+"\nColor="+((Hull) hulls.get(j)).getHullColor();
 		}
 		return s;
 		
