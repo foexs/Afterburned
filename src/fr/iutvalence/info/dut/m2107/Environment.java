@@ -4,7 +4,7 @@ public enum Environment {
 	nebula("ihm/nebulab.png",50,0,0,50),
 	asteroidField("ihm/asteroid.png",0,50,0,50),
 	sunbelt("ihm/sun.png", 0, 0, 10, 50),
-	orbit("ihm/orbit.png", 0, 0, 0, 80),
+	orbit("ihm/orbitl.png", 0, 0, 0, 80),
 	emptySpace("ihm/empty.png", 0, 0, 0, 50);
 	
 	
