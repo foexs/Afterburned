@@ -1,11 +1,11 @@
 package fr.iutvalence.info.dut.m2107;
 
 public enum Environment {
-	nebula("ihm/environnement brouillard nébuleuse",50,0,0,50),
-	asteroidField("ihm/environnement brouillard nébuleuse",0,50,0,50),
-	sunbelt("ihm/environnement brouillard nébuleuse", 0, 0, 10, 50),
-	orbit("ihm/environnement brouillard nébuleuse", 0, 0, 0, 80),
-	emptySpace("ihm/environnement brouillard nébuleuse", 0, 0, 0, 50);
+	nebula("ihm/nebulab.png",50,0,0,50),
+	asteroidField("ihm/asteroid.png",0,50,0,50),
+	sunbelt("ihm/sun.png", 0, 0, 10, 50),
+	orbit("ihm/orbit.png", 0, 0, 0, 80),
+	emptySpace("ihm/empty.png", 0, 0, 0, 50);
 	
 	
 	//Nebula
@@ -28,7 +28,11 @@ public enum Environment {
 	
 	
 	private Environment(String backgroundPath, int fogLevel, int asteroidSpawnRate, int sunDamage, int enemySpawnRate){
-		
+		this.backgroundPath=backgroundPath;
+		this.fogLevel=fogLevel;
+		this.asteroidSpawnRate=asteroidSpawnRate;
+		this.sunDamage=sunDamage;
+		this.enemySpawnRate=enemySpawnRate;
 	}
 	//getters
 	

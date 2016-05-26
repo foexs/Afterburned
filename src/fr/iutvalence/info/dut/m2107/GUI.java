@@ -41,8 +41,7 @@ public class GUI extends BasicGame {
 	        GUI.container = container;
 	        this.menu=new MainMenu();
 	        currentEnvironment = Environment.emptySpace;
-	        this.game=new Game(currentEnvironment);
-	       
+	        this.game=new Game();	       
 	        
 	    }
 
@@ -51,7 +50,7 @@ public class GUI extends BasicGame {
 	    	
 	    	if (this.playing)
 	    	{
-	    		g.drawImage(new Image(currentEnvironment.backgroundPath), 0, 0);
+	    		g.drawImage(new Image(currentEnvironment.getBackgroundPath()), 0, 0);
 	    	}
 	    	
 	    	else
