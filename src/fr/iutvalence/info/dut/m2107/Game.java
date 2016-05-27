@@ -1,14 +1,24 @@
 package fr.iutvalence.info.dut.m2107;
 
+/**
+ * @author popekn
+ * Represents the game itself
+ */
 public class Game {
 
 	private int score;
 	
+	/**
+	 * Game's algorithm. Everything related to the Game goes here. 
+	 */
 	public Game()
 	{
 		this.score=0;
 	}
 
+	/**
+	 * @return 
+	 */
 	//getters and setters
 	public int getScore() {
 		return score;
