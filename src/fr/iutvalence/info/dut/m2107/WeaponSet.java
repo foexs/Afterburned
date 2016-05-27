@@ -10,7 +10,7 @@ import java.util.ListIterator;
 
 public class WeaponSet {
 
-	public List weapons=new LinkedList();
+	public List<Weapon> weapons=new LinkedList<Weapon>();
 	
 	void getWeaponFromFile(String filename){
 		Scanner scan = null;
@@ -18,7 +18,8 @@ public class WeaponSet {
 			try {
 				boolean recordColor=false;
 				boolean recordDamage=false;
-				int i=0;
+				boolean recordName=false;
+				String name="Default";
 
 				scan = new Scanner(new File(filename));
 				
@@ -40,18 +41,23 @@ public class WeaponSet {
 						damage=Integer.parseInt(line);
 						recordDamage=false;
 					}
+					if (recordName){
+						name=line;
+						recordName=false;
+					}
 					if (line.equalsIgnoreCase("weaponcolor")){
 						recordColor=true;
 					}
 					if (line.equalsIgnoreCase("weapondamage")){
 						recordDamage=true;
 					}
+					if (line.equalsIgnoreCase("weaponname")){
+						recordName=true;
+					}
 					if (line.equalsIgnoreCase("}")){
 						
-						weapons.add(new Weapon(color, damage));
-						
-						i++;
-					}
+						weapons.add(new Weapon(color, damage, name));
+						}
 					}
 				} finally {
 					if (scan != null)
@@ -64,8 +70,13 @@ public class WeaponSet {
 		}
 	public String toString(){
 		String s="";
-		for(int j=0;weapons.get(j)!=null;j++){
-			s=s+"\nWeapon "+j+":\nDamage= "+((Weapon) weapons.get(j)).getDamageLevel()+"\nColor="+((Weapon) weapons.get(j)).getWeaponColor();
+		for(int j=0;true;j++){
+			try{			
+				s=s+"\nWeapon "+j+":\nDamage= "+((Weapon) weapons.get(j)).getDamageLevel()+"\nColor="+((Weapon) weapons.get(j)).getWeaponColor()+"Nom: "+((Weapon) weapons.get(j)).getName();
+			}
+			catch (IndexOutOfBoundsException e){
+				break;
+			}
 		}
 		return s;
 		

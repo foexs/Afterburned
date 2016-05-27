@@ -68,9 +68,9 @@ public class GUI extends BasicGame {
 	    		g.drawLine( 589, 491, 589, 524);
 	    		g.drawLine( 590, 490, 590, 525);
 	    		if(menu.selection==Selection.weapon)
-	    			g.drawString("Weapon: "+menu.currentWeapon, DEFAULT_WIDTH/4+DEFAULT_WIDTH/12 , DEFAULT_HEIGHT/2+DEFAULT_HEIGHT/8+LINE_SIZE*1);
+	    			g.drawString("Weapon: "+menu.ws.weapons.get(menu.currentWeapon).getName(), DEFAULT_WIDTH/4+DEFAULT_WIDTH/12 , DEFAULT_HEIGHT/2+DEFAULT_HEIGHT/8+LINE_SIZE*1);
 	    		if(menu.selection==Selection.hull)
-	    			g.drawString("Hull: "+menu.currentHull, DEFAULT_WIDTH/4+DEFAULT_WIDTH/12 , DEFAULT_HEIGHT/2+DEFAULT_HEIGHT/8+LINE_SIZE*1);
+	    			g.drawString("Hull: "+menu.hs.hulls.get(menu.currentHull).getName(), DEFAULT_WIDTH/4+DEFAULT_WIDTH/12 , DEFAULT_HEIGHT/2+DEFAULT_HEIGHT/8+LINE_SIZE*1);
 	    		if(menu.selection==Selection.environment)
 	    			g.drawString("Environment: "+menu.currentEnvironment.name(), DEFAULT_WIDTH/4+DEFAULT_WIDTH/12, DEFAULT_HEIGHT/2+DEFAULT_HEIGHT/8+LINE_SIZE*1);
 	    		g.drawLine( 330, 690, 590, 690);

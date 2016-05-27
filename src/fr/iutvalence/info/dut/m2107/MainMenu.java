@@ -36,6 +36,7 @@ public class MainMenu {
 		 */
 		es = new EnemySet();
 		es.getEnnemyFromFile(CONFIG_FILE);
+		
 		/**
 		 * set default cursor position
 		 */

@@ -3,12 +3,14 @@ package fr.iutvalence.info.dut.m2107;
 public class Hull {
 
 	
-	private Color hullColor;
-	private float protectionLevel;
+	private final Color hullColor;
+	private final float protectionLevel;
+	private final String name;
 	
-	public Hull(Color color, int protection) {
+	public Hull(Color color, int protection, String name) {
 		this.hullColor=color;
 		this.protectionLevel=protection;
+		this.name=name;
 	}
 	
 	public float getProtectionLevel() {
@@ -17,6 +19,10 @@ public class Hull {
 	public Color getHullColor() {
 		// TODO Auto-generated method stub
 		return this.hullColor;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 }

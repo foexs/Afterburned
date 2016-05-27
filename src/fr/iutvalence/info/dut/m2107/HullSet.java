@@ -10,7 +10,7 @@ import java.util.ListIterator;
 
 public class HullSet {
 	
-	public List hulls=new LinkedList();
+	public List<Hull> hulls=new LinkedList<Hull>();
 	
 	void getHullFromFile(String filename){
 		Scanner scan = null;
@@ -18,12 +18,13 @@ public class HullSet {
 			try {
 				boolean recordColor=false;
 				boolean recordProtection=false;
-				int i=0;
-
+				boolean recordName=false;
+				
 				scan = new Scanner(new File(filename));
 				
 				int protection=1;
 				Color color=Color.grey;
+				String name="Default";
 				
 				while (scan.hasNextLine()) {
 					
@@ -31,7 +32,10 @@ public class HullSet {
 					for (char cc : scan.next().toCharArray()) {
 						line= line+cc;
 					}
-					
+					if (recordName){
+						name=line;
+						recordName=false;
+					}
 					if (recordColor){
 						color=Color.valueOf(line);
 						recordColor=false;
@@ -46,12 +50,14 @@ public class HullSet {
 					if (line.equalsIgnoreCase("hullprotection")){
 						recordProtection=true;
 					}
+					if (line.equalsIgnoreCase("hullname")){
+						recordName=true;
+					}
 					if (line.equalsIgnoreCase("}")){
 						
-						hulls.add(new Hull(color, protection));
+						hulls.add(new Hull(color, protection, name));
 						
-						i++;
-					}
+						}
 					}
 				} finally {
 					if (scan != null)
@@ -64,8 +70,13 @@ public class HullSet {
 		}
 	public String toString(){
 		String s="";
-		for(int j=0;hulls.get(j)!=null;j++){
-			s=s+"\nHull "+j+":\nProtection= "+((Hull) hulls.get(j)).getProtectionLevel()+"\nColor="+((Hull) hulls.get(j)).getHullColor();
+		for(int j=0;true;j++){
+			try{
+				s=s+"\nHull "+j+":\nProtection= "+((Hull) hulls.get(j)).getProtectionLevel()+"\nColor="+((Hull) hulls.get(j)).getHullColor()+"Nom: "+((Hull) hulls.get(j)).getName();
+			}
+			catch (IndexOutOfBoundsException e){
+				break;
+			}
 		}
 		return s;
 		
