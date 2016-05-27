@@ -59,28 +59,30 @@ public class GUI extends BasicGame {
 	    	else
 	    	{
 	    		g.drawImage(new Image (backgroundMenu), 0, 0);
-	    		g.drawLine( 330, 490, 590, 490);
+	    		/*g.drawLine( 330, 490, 590, 490);
 	    		g.drawLine( 331, 491, 589, 491);
 	    		g.drawLine( 330, 525, 590, 525);
 	    		g.drawLine( 331, 524, 589, 524);
 	    		g.drawLine( 330, 490, 330, 525);
 	    		g.drawLine( 331, 491, 331, 524);
 	    		g.drawLine( 589, 491, 589, 524);
-	    		g.drawLine( 590, 490, 590, 525);
+	    		g.drawLine( 590, 490, 590, 525);*/
+	    		drawBox(new Dot(330,490),260,35,g);
 	    		if(menu.selection==Selection.weapon)
 	    			g.drawString("Weapon: "+menu.ws.weapons.get(menu.currentWeapon).getName(), DEFAULT_WIDTH/4+DEFAULT_WIDTH/12 , DEFAULT_HEIGHT/2+DEFAULT_HEIGHT/8+LINE_SIZE*1);
 	    		if(menu.selection==Selection.hull)
 	    			g.drawString("Hull: "+menu.hs.hulls.get(menu.currentHull).getName(), DEFAULT_WIDTH/4+DEFAULT_WIDTH/12 , DEFAULT_HEIGHT/2+DEFAULT_HEIGHT/8+LINE_SIZE*1);
 	    		if(menu.selection==Selection.environment)
 	    			g.drawString("Environment: "+menu.currentEnvironment.name(), DEFAULT_WIDTH/4+DEFAULT_WIDTH/12, DEFAULT_HEIGHT/2+DEFAULT_HEIGHT/8+LINE_SIZE*1);
-	    		g.drawLine( 330, 690, 590, 690);
+	    		/*g.drawLine( 330, 690, 590, 690);
 	    		g.drawLine( 331, 691, 589, 691);
 	    		g.drawLine( 330, 725, 590, 725);
 	    		g.drawLine( 331, 724, 589, 724);
 	    		g.drawLine( 330, 690, 330, 725);
 	    		g.drawLine( 331, 691, 331, 724);
 	    		g.drawLine( 589, 691, 589, 724);
-	    		g.drawLine( 590, 690, 590, 725);
+	    		g.drawLine( 590, 690, 590, 725);*/
+	    		drawBox(new Dot(330,690),260,35,g);
 	    		g.drawString("Press enter to play.", DEFAULT_WIDTH/4+DEFAULT_WIDTH/12, DEFAULT_HEIGHT/2+DEFAULT_HEIGHT/4+DEFAULT_HEIGHT/8+DEFAULT_HEIGHT/128+LINE_SIZE*1);
 	    	}
 	    	
@@ -164,6 +166,13 @@ public class GUI extends BasicGame {
 	    }
 	public static void main(String[] args) throws SlickException {
 		new AppGameContainer(new GUI(), DEFAULT_WIDTH, DEFAULT_HEIGHT, false).start();
+	}
+	public static void drawBox(Dot position, int width, int height, Graphics g){
+		
+		
+		g.drawRect(position.getX(), position.getY(), width+2, height+2);
+		g.drawRect(position.getX()+1, position.getY()+1, width, height);
+		
 	}
 
 }
