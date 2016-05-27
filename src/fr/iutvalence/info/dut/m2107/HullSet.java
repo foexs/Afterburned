@@ -8,8 +8,15 @@ import java.util.List;
 import java.util.ListIterator;
 
 
+/**
+ * @author Popek
+ * This class is used to read from Perso.cfg all the hulls, and their characteristics, defined inside.
+ */
 public class HullSet {
 	
+	/**
+	 * Creates a LinkedList, containing all the hulls defines into Perso.cfg
+	 */
 	public List<Hull> hulls=new LinkedList<Hull>();
 	
 	void getHullFromFile(String filename){
@@ -68,6 +75,9 @@ public class HullSet {
 				System.out.println("File not found");
 				}
 		}
+	/**
+	 * Writes into a string all the settings of a given Hull.
+	 **/
 	public String toString(){
 		String s="";
 		for(int j=0;true;j++){
