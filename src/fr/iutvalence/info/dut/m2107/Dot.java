@@ -1,7 +1,7 @@
 package fr.iutvalence.info.dut.m2107;
 
 /**
- * @author popekn
+ * @author Popek
  * A Dot represents exactly where an element is.
  */
 public class Dot {
