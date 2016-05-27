@@ -7,13 +7,23 @@ package fr.iutvalence.info.dut.m2107;
 public class Game {
 
 	private int score;
+	private Ship ship;
+	public static final int DEFAULT_SHIP_SIZE=5;
+	/**
+	 * contains the settings
+	 */
+	private MainMenu menu;
 	
 	/**
 	 * Game's algorithm. Everything related to the Game goes here. 
 	 */
-	public Game()
+	public Game(MainMenu menu)
 	{
+		Weapon weapon=menu.ws.weapons.get(menu.currentWeapon);
+		Hull hull=menu.hs.hulls.get(menu.currentHull);
 		this.score=0;
+		this.menu=menu;
+		this.ship=new Ship(weapon, hull , new Dot(GUI.DEFAULT_WIDTH/2,GUI.DEFAULT_HEIGHT-40), DEFAULT_SHIP_SIZE);
 	}
 
 	/**

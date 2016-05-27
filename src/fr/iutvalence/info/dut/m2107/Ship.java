@@ -4,26 +4,23 @@ package fr.iutvalence.info.dut.m2107;
 public class Ship {
 	
 	//attributes
-	private Weapon currentWeapon;
-	private Hull currentHull;
+	private Weapon weapon;
+	private Hull hull;
 	private Dot position;
-	private int baseDamage;
-	private int healthPoint;
 	private float angle;
+	private int health;
 	
 	//shipSize will be used to calculate its hitbox.
 	private int size;
 	//private Hitbox shipHitBox; Removed, direct use of getHitbox instead
-	public Ship(Weapon currentWeapon, Hull currentHull,Dot shipPosition , int baseDamage, int healthPoint, float angle, int shipSize, Hitbox shipHitBox)
+	public Ship(Weapon currentWeapon, Hull currentHull,Dot shipPosition , int shipSize)
 	{
 		//Set the default values and constructors
 		//Weapon must have an ID!
-		this.currentWeapon = currentWeapon;
-		this.currentHull = currentHull;
+		this.weapon = currentWeapon;
+		this.hull = currentHull;
 		this.position = shipPosition;
-		this.baseDamage = baseDamage;		
-		this.healthPoint = healthPoint;
-		this.angle = angle;
+		this.angle = 0;
 		this.size = shipSize;
 	}
 	//
@@ -56,52 +53,26 @@ public class Ship {
 		setPosition(new Dot(this.position.getX(),this.position.getY()+1));
 		throw new UnsupportedOperationException();
 	}
-	
-	public void Move(Dot newCoordinates){
-		this.position=newCoordinates;
-	}
-	
-	
+		
 	//getters and setters
-	
-	public Hitbox getHitBox(int sizeMult)
-	{
-		return new Hitbox(sizeMult,sizeMult,sizeMult,sizeMult);
-	}
-	
 	public Weapon getCurrentWeapon() {
-		return this.currentWeapon;
-	}
-
-	public void setCurrentWeapon(Weapon currentWeapon) {
-		this.currentWeapon = currentWeapon;
+		return this.weapon;
 	}
 
 	public Hull getCurrentHull() {
-		return this.currentHull;
+		return this.hull;
 	}
 
-	public void setCurrentHull(Hull currentHull) {
-		this.currentHull = currentHull;
+	public int getDamage() {
+		return this.weapon.getDamageLevel();
 	}
-
-
-	public int getBaseDamage() {
-		return this.baseDamage;
+	public int getHealth()
+	{
+		return this.health;
 	}
-
-	public void setBaseDamage(int baseDamage) {
-		this.baseDamage = baseDamage;
+	public float getProtection(){
+		return this.hull.getProtectionLevel();
 	}
-
-	public int getHealthPoint() {
-		return this.healthPoint;
-	}
-
-	public void setHealthPoint(int healthPoint) {
-		this.healthPoint = healthPoint;
-	}
-
 	public float getAngle() {
 		return this.angle;
 	}
@@ -113,6 +84,7 @@ public class Ship {
 	{
 		this.position=position;
 	}
+	
 	public Hitbox getHitbox(){
 		return new Hitbox(this.position.getX()-this.size, this.position.getX()+this.size , this.position.getY()-this.size , this.position.getY()+this.size);
 	}
