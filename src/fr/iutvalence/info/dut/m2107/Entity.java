@@ -5,6 +5,33 @@ public class Entity {
 	private int size;
 	private int health;
 	private Dot position;
+	private EntityType type;
+	private Enemy enemy;
+	private Item item;
+	
+	public Entity(Dot position, Item item){
+		this.position=position;
+		this.size=item.getSize();
+		this.health=1;
+		this.type =EntityType.ITEM;
+		this.item=(item);
+	}
+	
+	public Entity(Dot position, Enemy enemy){
+		this.position=position;
+		this.size=enemy.getSize();
+		this.health=enemy.getHealth();
+		this.type=EntityType.ENEMY;
+		this.enemy=enemy;
+	}
+	
+	public Entity(Dot position,int size, int health){
+		this.position=position;
+		this.size=size;
+		this.health=health;
+		this.type=(EntityType.GENERAL);
+
+	}
 	
 	public int getSize() {
 		return size;
@@ -18,65 +45,19 @@ public class Entity {
 		return this.health;
 	}
 	
-	/**
-	 * Spawn an entity using its size
-	 * @param maxX
-	 * @param maxY
-	 * @param position
-	 * @param size
-	 */
-	public void spawn(int maxX, int maxY, int position, int size){
-		spawn(maxX, maxY, position, new Hitbox(-this.size,this.size,-this.size,this.size));
+	public Hitbox getHitbox(){
+		return new Hitbox(this.position.getX()-this.size,this.position.getX()+this.size,this.position.getY()-this.size,this.position.getY()+this.size);
 	}
-	/**
-	 * Spawn an entity using its size
-	 * @param maxX
-	 * @param maxY
-	 * @param position
-	 * @param size
-	 */
-	public void spawnEnemy(int maxX, int maxY, int position, int size, Enemy currentMonster){
-		spawnEnemy(maxX, maxY, position, new Hitbox(-this.size,this.size,-this.size,this.size), currentMonster);
+
+	public EntityType getType() {
+		return type;
 	}
-	/**
-	 * Spawn an entity using its size
-	 * @param maxX
-	 * @param maxY
-	 * @param position
-	 * @param size
-	 */
-	public void spawnItem(int maxX, int maxY, int position, int size, Item currentItem){
-		spawnItem(maxX, maxY, position, new Hitbox(-this.size,this.size,-this.size,this.size), currentItem);
+
+	public Item getItem() {
+		return item;
 	}
-	/**
-	 * Spawn an entity using a custom hitbox
-	 * @param maxX
-	 * @param maxY
-	 * @param position
-	 * @param hitbox
-	 */
-	public void spawn(int maxX, int maxY, int position, Hitbox hitbox){
-		//todo
+
+	public Enemy getEnemy() {
+		return enemy;
 	}
-	/**
-	 * Spawn an entity using a custom hitbox
-	 * @param maxX
-	 * @param maxY
-	 * @param position
-	 * @param hitbox
-	 */
-	public void spawnEnemy(int maxX, int maxY, int position, Hitbox hitbox, Enemy currentMonster){
-		//todo
-	}
-	/**
-	 * Spawn an entity using a custom hitbox
-	 * @param maxX
-	 * @param maxY
-	 * @param position
-	 * @param hitbox
-	 */
-	public void spawnItem(int maxX, int maxY, int position, Hitbox hitbox, Item currentItem){
-		//todo
-	}
-	
 }

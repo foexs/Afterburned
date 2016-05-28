@@ -1,5 +1,8 @@
 package fr.iutvalence.info.dut.m2107;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * @author popekn
  * Represents the game itself
@@ -9,6 +12,7 @@ public class Game {
 	private int score;
 	private Ship ship;
 	public static final int DEFAULT_SHIP_SIZE=5;
+	private LinkedList<Entity> entities;
 	/**
 	 * contains the settings
 	 */
@@ -24,6 +28,8 @@ public class Game {
 		this.score=0;
 		this.menu=menu;
 		this.ship=new Ship(weapon, hull , new Dot(GUI.DEFAULT_WIDTH/2,GUI.DEFAULT_HEIGHT-40), DEFAULT_SHIP_SIZE);
+		entities = new LinkedList<Entity>();
+
 	}
 	public void enemyTurn(){
 		
@@ -36,10 +42,27 @@ public class Game {
 		return score;
 	}
 
-	public void setScore(int score) {
-		this.score = score;
+	public LinkedList<Entity> getEntities() {
+		return entities;
 	}
-
+	
+	public void spawnItem(Dot position,Item item){
+		entities.add(new Entity(position,item));
+	}
+	public void spawnEnemy(Dot position,Enemy enemy){
+		entities.add(new Entity(position,enemy));
+	}
+	public void spawnEntity(Dot position,int size, int health){
+		entities.add(new Entity(position, size, health));
+	}
+	
+	public void spawnEnemy(){
+		
+	}
+	
+	public void spawnGeneralEntity(){
+		
+	}
 	
 	public void rightKeyPressed(){
 		System.out.println(this.getClass()+" right key pressed");
@@ -62,6 +85,8 @@ public class Game {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 
 	
 }
