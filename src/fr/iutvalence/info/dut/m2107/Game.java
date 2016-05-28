@@ -25,7 +25,9 @@ public class Game {
 		this.menu=menu;
 		this.ship=new Ship(weapon, hull , new Dot(GUI.DEFAULT_WIDTH/2,GUI.DEFAULT_HEIGHT-40), DEFAULT_SHIP_SIZE);
 	}
-
+	public void enemyTurn(){
+		
+	}
 	/**
 	 * @return 
 	 */

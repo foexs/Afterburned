@@ -24,18 +24,6 @@ public class Ship {
 		this.size = shipSize;
 	}
 	//
-	//methods
-	public void Fire() {
-		// TODO - implement Ship.Fire
-		throw new UnsupportedOperationException();
-	}
-
-	public void Aim() {
-		// TODO - implement Ship.Aim
-		//Angle 'll be set by the player.
-		this.setAngle(angle);
-		throw new UnsupportedOperationException();
-	}
 	/**
 	 * Move the ship?
 	 * Might have a parameter to set the direction,
