@@ -10,7 +10,7 @@ import java.util.List;
 public class Game {
 
 	private int score;
-	private Ship ship;
+	protected Ship ship;
 	public static final int DEFAULT_SHIP_SIZE=5;
 	private LinkedList<Entity> entities;
 	/**

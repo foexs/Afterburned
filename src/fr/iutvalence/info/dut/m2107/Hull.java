@@ -10,6 +10,7 @@ public class Hull {
 	private final Color hullColor;
 	private final float protectionLevel;
 	private final String name;
+	private String hullPath;
 	
 	/**
 	 * @param color : Defines what is the hull color.
@@ -20,6 +21,21 @@ public class Hull {
 		this.hullColor=color;
 		this.protectionLevel=protection;
 		this.name=name;
+		switch (hullColor)
+		{
+		case white:
+			this.hullPath="ihm/aperçu vaisseau blanc.png";
+		case grey:
+			this.hullPath="ihm/aperçu vaisseau gris.png";
+		case red:
+			this.hullPath="ihm/aperçu vaisseau rouge.png";
+		case gold:
+			this.hullPath="ihm/aperçu vaisseau or.png";
+		case blue:
+			this.hullPath="ihm/aperçu vaisseau bleu.png";
+		case green:
+			this.hullPath="ihm/aperçu vaisseau vert.png";
+		}
 	}
 	
 	/**
@@ -32,8 +48,11 @@ public class Hull {
 	 * @return hullColor, the current color of the ship.
 	 */
 	public Color getHullColor() {
-		// TODO Auto-generated method stub
 		return this.hullColor;
+	}
+	
+	public String getHullPath() {
+		return this.hullPath;
 	}
 
 	/**

@@ -10,9 +10,11 @@ public class Ship {
 	private float angle;
 	private int health;
 	private int damageBonus;
+	protected String shipPath;
 	
 	//shipSize will be used to calculate its hitbox.
 	private int size;
+	
 	//private Hitbox shipHitBox; Removed, direct use of getHitbox instead
 	public Ship(Weapon currentWeapon, Hull currentHull,Dot shipPosition , int shipSize)
 	{
@@ -24,6 +26,7 @@ public class Ship {
 		this.angle = 0;
 		this.damageBonus=0;
 		this.size = shipSize;
+		this.shipPath=currentHull.getHullPath();
 	}
 	//
 	/**
@@ -43,7 +46,7 @@ public class Ship {
 		setPosition(new Dot(this.position.getX(),this.position.getY()+1));
 		throw new UnsupportedOperationException();
 	}
-		
+	
 	//getters and setters
 	public Weapon getCurrentWeapon() {
 		return this.weapon;
@@ -69,10 +72,9 @@ public class Ship {
 	public float getProtection(){
 		return this.hull.getProtectionLevel();
 	}
-	public float getAngle() {
-		return this.angle;
+	public Dot getPosition() {
+		return this.position;
 	}
-
 	public void setAngle(float angle) {
 		this.angle = angle;
 	}

@@ -54,7 +54,9 @@ public class GUI extends BasicGame {
 	    		g.drawString("Weapon: "+menu.ws.weapons.get(menu.currentWeapon).getName(),DEFAULT_WIDTH/2 + DEFAULT_WIDTH/4 , LINE_SIZE*1);
 	    		g.drawString("Hull: "+menu.hs.hulls.get(menu.currentHull).getName(),DEFAULT_WIDTH/2 + DEFAULT_WIDTH/4, LINE_SIZE*2);
 	    		g.drawString("Environment: "+menu.currentEnvironment.name(),DEFAULT_WIDTH/2 + DEFAULT_WIDTH/4,LINE_SIZE*3);
-	    		
+	    		Dot position= new Dot(DEFAULT_WIDTH/2-62,DEFAULT_HEIGHT-125);
+	    		game.ship.setPosition(position);
+	    		g.drawImage(new Image(game.ship.shipPath),game.ship.getPosition().getX(),game.ship.getPosition().getY());
 	    	}
 	    	/**
 	    	 * when on menu
