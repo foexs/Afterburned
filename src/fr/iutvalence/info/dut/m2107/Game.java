@@ -27,7 +27,7 @@ public class Game {
 		Hull hull=menu.hs.hulls.get(menu.currentHull);
 		this.score=0;
 		this.menu=menu;
-		this.ship=new Ship(weapon, hull , new Dot(GUI.DEFAULT_WIDTH/2,GUI.DEFAULT_HEIGHT-40), DEFAULT_SHIP_SIZE);
+		this.ship=(new Ship(weapon, hull , new Dot(GUI.DEFAULT_WIDTH/2,GUI.DEFAULT_HEIGHT-40), DEFAULT_SHIP_SIZE));
 		entities = new LinkedList<Entity>();
 
 	}
@@ -55,20 +55,54 @@ public class Game {
 	public void spawnEntity(Dot position,int size, int health){
 		entities.add(new Entity(position, size, health));
 	}
-	
-	public void spawnEnemy(){
-		
-	}
-	
-	public void spawnGeneralEntity(){
-		
+	public Ship getShip() {
+		return ship;
+	}	
+	public void collisionUpdate(){
+		for(int i=0; i<this.entities.size()-1;i++){
+			/**
+			 * looks if the two hitboxes touches
+			 */
+			if(this.ship.getHitbox().isIn(this.entities.get(i).getHitbox())){
+				/**
+				 * if the entity is an item
+				 */
+				if(this.entities.get(i).getType()==EntityType.ITEM){
+					
+					this.ship.heal(this.entities.get(i).getItem().getHealthRestoreLevel());
+					
+					this.ship.increaseDamage(this.entities.get(i).getItem().getBaseDamageLevel());
+					/**
+					 * clear screen if bomb
+					 */
+					if(this.entities.get(i).getItem().isBomb()){
+						this.entities = new LinkedList<Entity>();
+					}
+				}
+				/**
+				 * the entity is an enemy or a rock
+				 */
+				else{
+					/**
+					 * deal damages to the ship
+					 */
+					this.ship.heal(-this.entities.get(i).getHealth());
+				}
+				/**
+				 * destroy entity
+				 */
+				this.entities.remove(i);
+				
+			}
+			
+		}
 	}
 	
 	public void rightKeyPressed(){
-		System.out.println(this.getClass()+" right key pressed");
+		
 	}
 	public void leftKeyPressed(){
-		System.out.println(this.getClass()+" left key pressed");
+		
 	}
 
 	public void upKeyPressed() {
@@ -85,6 +119,7 @@ public class Game {
 		// TODO Auto-generated method stub
 		
 	}
+	
 	
 	
 

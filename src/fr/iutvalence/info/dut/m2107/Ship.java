@@ -9,6 +9,7 @@ public class Ship {
 	private Dot position;
 	private float angle;
 	private int health;
+	private int damageBonus;
 	
 	//shipSize will be used to calculate its hitbox.
 	private int size;
@@ -21,6 +22,7 @@ public class Ship {
 		this.hull = currentHull;
 		this.position = shipPosition;
 		this.angle = 0;
+		this.damageBonus=0;
 		this.size = shipSize;
 	}
 	//
@@ -52,11 +54,17 @@ public class Ship {
 	}
 
 	public int getDamage() {
-		return this.weapon.getDamageLevel();
+		return this.weapon.getDamageLevel()+this.damageBonus;
+	}
+	public void increaseDamage(int dmg){
+		this.damageBonus=this.damageBonus+dmg;
 	}
 	public int getHealth()
 	{
 		return this.health;
+	}
+	public void heal(int hp){
+		this.health=this.health+hp;
 	}
 	public float getProtection(){
 		return this.hull.getProtectionLevel();
