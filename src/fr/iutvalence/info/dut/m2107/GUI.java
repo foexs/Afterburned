@@ -1,6 +1,7 @@
 package fr.iutvalence.info.dut.m2107;
 
 import org.newdawn.slick.*;
+import org.newdawn.slick.Color;
 
 /**
  * Define a gui, to execute you need to have the natives in your build path and this argument:"Djava.library.path=lib/natives"
@@ -54,9 +55,12 @@ public class GUI extends BasicGame {
 	    		g.drawString("Weapon: "+menu.ws.weapons.get(menu.currentWeapon).getName(),DEFAULT_WIDTH/2 + DEFAULT_WIDTH/4 , LINE_SIZE*1);
 	    		g.drawString("Hull: "+menu.hs.hulls.get(menu.currentHull).getName(),DEFAULT_WIDTH/2 + DEFAULT_WIDTH/4, LINE_SIZE*2);
 	    		g.drawString("Environment: "+menu.currentEnvironment.name(),DEFAULT_WIDTH/2 + DEFAULT_WIDTH/4,LINE_SIZE*3);
+	    		g.setColor(Color.red);
+	    		g.drawLine(0,game.ship.getPosition().getY(), DEFAULT_WIDTH,game.ship.getPosition().getY() );
+	    		g.setColor(Color.white);
 	    		Dot position= new Dot(DEFAULT_WIDTH/2-62,DEFAULT_HEIGHT-125);
 	    		game.ship.setPosition(position);
-	    		g.drawImage(new Image(game.ship.shipPath),game.ship.getPosition().getX(),game.ship.getPosition().getY());
+	    		g.drawImage(new Image(game.ship.getShipPath()),game.ship.getPosition().getX(),game.ship.getPosition().getY());
 	    	}
 	    	/**
 	    	 * when on menu

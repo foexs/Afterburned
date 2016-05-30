@@ -10,7 +10,6 @@ public class Ship {
 	private float angle;
 	private int health;
 	private int damageBonus;
-	protected String shipPath;
 	
 	//shipSize will be used to calculate its hitbox.
 	private int size;
@@ -26,7 +25,6 @@ public class Ship {
 		this.angle = 0;
 		this.damageBonus=0;
 		this.size = shipSize;
-		this.shipPath=currentHull.getHullPath();
 	}
 	//
 	/**
@@ -50,6 +48,10 @@ public class Ship {
 	//getters and setters
 	public Weapon getCurrentWeapon() {
 		return this.weapon;
+	}
+	
+	public String getShipPath(){
+		return this.hull.getHullPath();
 	}
 
 	public Hull getCurrentHull() {
