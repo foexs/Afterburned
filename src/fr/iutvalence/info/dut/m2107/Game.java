@@ -1,5 +1,6 @@
 package fr.iutvalence.info.dut.m2107;
 
+import java.awt.event.MouseEvent;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ public class Game {
 
 	private int score;
 	protected Ship ship;
-	public static final int DEFAULT_SHIP_SIZE=5;
+	public static final int DEFAULT_SHIP_SIZE=62;
 	private LinkedList<Entity> entities;
 	/**
 	 * contains the settings
@@ -58,6 +59,10 @@ public class Game {
 	public Ship getShip() {
 		return ship;
 	}	
+	public int getShipSize() {
+		return DEFAULT_SHIP_SIZE;
+	}	
+	
 	public void collisionUpdate(){
 		for(int i=0; i<this.entities.size()-1;i++){
 			/**
@@ -118,6 +123,9 @@ public class Game {
 	public void enterKeyPressed() {
 		// TODO Auto-generated method stub
 		
+	}
+	public void onMouseReleased(int x) {
+		ship.setPosition(new Dot(x-62,ship.getPosition().getY()));
 	}
 	
 	

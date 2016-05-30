@@ -3,7 +3,6 @@ package fr.iutvalence.info.dut.m2107;
 import java.awt.Font;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Color;
-import org.lwjgl.input.Mouse;
 import org.newdawn.slick.TrueTypeFont;
 /**
  * Define a gui, to execute you need to have the natives in your build path and this argument:"Djava.library.path=lib/natives"
@@ -19,6 +18,7 @@ public class GUI extends BasicGame {
 	
 		private TrueTypeFont font;
 		private TrueTypeFont font2;
+		private TrueTypeFont font3;
 		
 		public Image backgroundGame;
 		
@@ -50,11 +50,13 @@ public class GUI extends BasicGame {
 			font = new TrueTypeFont(awtFont, true);
 			Font awtFont2 = new Font("Impact", Font.BOLD, 16);
 			font2 = new TrueTypeFont(awtFont2, true);
-			Mouse mouse = null;
+			Font awtFont3 = new Font("Impact", Font.PLAIN, 16);
+			font3 = new TrueTypeFont(awtFont3, true);
+    		game.ship.setPosition(new Dot(DEFAULT_WIDTH/2-game.getShipSize(),DEFAULT_HEIGHT-game.getShipSize()*2));
 	        }
 
 	    @Override
-	    public void render(GameContainer container, Graphics g) throws SlickException {
+	    public void render(GameContainer container, Graphics g)  throws SlickException {
 	    	/**
 	    	 * when playing
 	    	 */
@@ -65,12 +67,13 @@ public class GUI extends BasicGame {
 	    		font2.drawString(DEFAULT_WIDTH/2 + DEFAULT_WIDTH/4+DEFAULT_WIDTH/24 , LINE_SIZE*2,"Hull: "+menu.hs.hulls.get(menu.currentHull).getName());
 	    		font2.drawString(DEFAULT_WIDTH/2 + DEFAULT_WIDTH/4+DEFAULT_WIDTH/24 ,LINE_SIZE*3,"Environment: "+menu.currentEnvironment.name());
 	    		g.setColor(Color.red);
-	    		g.drawLine(0,game.ship.getPosition().getY(), DEFAULT_WIDTH,game.ship.getPosition().getY() );
+	    		g.drawLine(0,game.getShip().getPosition().getY(), DEFAULT_WIDTH,game.ship.getPosition().getY() );
+	    		g.drawLine(0,game.getShip().getPosition().getY()+1, DEFAULT_WIDTH,game.ship.getPosition().getY()+1);
 	    		g.setColor(Color.white);
-	    		Dot position= new Dot(DEFAULT_WIDTH/2-62,DEFAULT_HEIGHT-125);
-	    		game.ship.setPosition(position);
-	    		g.drawImage(new Image(game.ship.getShipPath()),game.ship.getPosition().getX(),game.ship.getPosition().getY());
+	    		g.drawImage(new Image(game.getShip().getShipPath()),game.ship.getPosition().getX(),game.ship.getPosition().getY());
 	    		font.drawString(DEFAULT_WIDTH/3, DEFAULT_HEIGHT/4,"Move your ship!");
+	    		font3.drawString(DEFAULT_WIDTH/6, DEFAULT_HEIGHT/3,"(Int: you move by clicking, you can click anywhere you want, just remember you can click only once, so be careful.)");
+	    		
 	    	}
 	    	/**
 	    	 * when on menu
@@ -94,6 +97,15 @@ public class GUI extends BasicGame {
 	    @Override
 	    public void update(GameContainer container, int delta) throws SlickException {
 	    		
+	    }
+	    
+	    @Override
+	    public void mouseReleased(int bouton, int x, int y)
+	    {
+	    	if(playing)
+	    	{
+	    		game.onMouseReleased(x);
+	    	}
 	    }
 	    
 	    @Override
@@ -165,11 +177,11 @@ public class GUI extends BasicGame {
 	        	}
 	        }
 			
-			
 	    }
 	public static void main(String[] args) throws SlickException {
 		new AppGameContainer(new GUI(), DEFAULT_WIDTH, DEFAULT_HEIGHT, false).start();
 	}
+	
 	public static void drawBox(Dot position, int width, int height, Graphics g){
 		
 		
