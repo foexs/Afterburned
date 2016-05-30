@@ -1,8 +1,10 @@
 package fr.iutvalence.info.dut.m2107;
 
+import java.awt.Font;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Color;
-
+import org.lwjgl.input.Mouse;
+import org.newdawn.slick.TrueTypeFont;
 /**
  * Define a gui, to execute you need to have the natives in your build path and this argument:"Djava.library.path=lib/natives"
  * @author simon
@@ -15,7 +17,9 @@ public class GUI extends BasicGame {
 		public static final int LINE_SIZE=20;
 		
 	
-		Font font;
+		private TrueTypeFont font;
+		private TrueTypeFont font2;
+		
 		public Image backgroundGame;
 		
 		public final String backgroundMenu = ("ihm/background menu_1.png");
@@ -41,7 +45,12 @@ public class GUI extends BasicGame {
 	    public void init(GameContainer container) throws SlickException {
 	        GUI.container = container;
 	        this.menu=new MainMenu();
-	        this.game=new Game(menu);	 
+	        this.game=new Game(menu);	
+	        Font awtFont = new Font("Impact", Font.BOLD, 48);
+			font = new TrueTypeFont(awtFont, true);
+			Font awtFont2 = new Font("Impact", Font.BOLD, 16);
+			font2 = new TrueTypeFont(awtFont2, true);
+			Mouse mouse = null;
 	        }
 
 	    @Override
@@ -52,15 +61,16 @@ public class GUI extends BasicGame {
 	    	if (this.playing)
 	    	{
 	    		g.drawImage(new Image(menu.currentEnvironment.getBackgroundPath()), 0, 0);//Draw background
-	    		g.drawString("Weapon: "+menu.ws.weapons.get(menu.currentWeapon).getName(),DEFAULT_WIDTH/2 + DEFAULT_WIDTH/4 , LINE_SIZE*1);
-	    		g.drawString("Hull: "+menu.hs.hulls.get(menu.currentHull).getName(),DEFAULT_WIDTH/2 + DEFAULT_WIDTH/4, LINE_SIZE*2);
-	    		g.drawString("Environment: "+menu.currentEnvironment.name(),DEFAULT_WIDTH/2 + DEFAULT_WIDTH/4,LINE_SIZE*3);
+	    		font2.drawString(DEFAULT_WIDTH/2 + DEFAULT_WIDTH/4+DEFAULT_WIDTH/24  , LINE_SIZE*1,"Weapon: "+menu.ws.weapons.get(menu.currentWeapon).getName());
+	    		font2.drawString(DEFAULT_WIDTH/2 + DEFAULT_WIDTH/4+DEFAULT_WIDTH/24 , LINE_SIZE*2,"Hull: "+menu.hs.hulls.get(menu.currentHull).getName());
+	    		font2.drawString(DEFAULT_WIDTH/2 + DEFAULT_WIDTH/4+DEFAULT_WIDTH/24 ,LINE_SIZE*3,"Environment: "+menu.currentEnvironment.name());
 	    		g.setColor(Color.red);
 	    		g.drawLine(0,game.ship.getPosition().getY(), DEFAULT_WIDTH,game.ship.getPosition().getY() );
 	    		g.setColor(Color.white);
 	    		Dot position= new Dot(DEFAULT_WIDTH/2-62,DEFAULT_HEIGHT-125);
 	    		game.ship.setPosition(position);
 	    		g.drawImage(new Image(game.ship.getShipPath()),game.ship.getPosition().getX(),game.ship.getPosition().getY());
+	    		font.drawString(DEFAULT_WIDTH/3, DEFAULT_HEIGHT/4,"Move your ship!");
 	    	}
 	    	/**
 	    	 * when on menu
@@ -70,13 +80,13 @@ public class GUI extends BasicGame {
 	    		g.drawImage(new Image (backgroundMenu), 0, 0);
 	    		drawBox(new Dot(330,490),260,35,g);
 	    		if(menu.selection==Selection.weapon)
-	    			g.drawString("Weapon: "+menu.ws.weapons.get(menu.currentWeapon).getName(), DEFAULT_WIDTH/4+DEFAULT_WIDTH/12 , DEFAULT_HEIGHT/2+DEFAULT_HEIGHT/8+LINE_SIZE*1);
+	    			font2.drawString(DEFAULT_WIDTH/4+DEFAULT_WIDTH/10 , DEFAULT_HEIGHT/2+DEFAULT_HEIGHT/8+LINE_SIZE*1,"Weapon: "+menu.ws.weapons.get(menu.currentWeapon).getName());
 	    		if(menu.selection==Selection.hull)
-	    			g.drawString("Hull: "+menu.hs.hulls.get(menu.currentHull).getName(), DEFAULT_WIDTH/4+DEFAULT_WIDTH/12 , DEFAULT_HEIGHT/2+DEFAULT_HEIGHT/8+LINE_SIZE*1);
+	    			font2.drawString( DEFAULT_WIDTH/4+DEFAULT_WIDTH/10 , DEFAULT_HEIGHT/2+DEFAULT_HEIGHT/8+LINE_SIZE*1,"Hull: "+menu.hs.hulls.get(menu.currentHull).getName());
 	    		if(menu.selection==Selection.environment)
-	    			g.drawString("Environment: "+menu.currentEnvironment.name(), DEFAULT_WIDTH/4+DEFAULT_WIDTH/12, DEFAULT_HEIGHT/2+DEFAULT_HEIGHT/8+LINE_SIZE*1);
+	    			font2.drawString(DEFAULT_WIDTH/4+DEFAULT_WIDTH/10, DEFAULT_HEIGHT/2+DEFAULT_HEIGHT/8+LINE_SIZE*1,"Environment: "+menu.currentEnvironment.name());
 	    		drawBox(new Dot(330,690),260,35,g);
-	    		g.drawString("Press enter to play.", DEFAULT_WIDTH/4+DEFAULT_WIDTH/12, DEFAULT_HEIGHT/2+DEFAULT_HEIGHT/4+DEFAULT_HEIGHT/8+DEFAULT_HEIGHT/128+LINE_SIZE*1);
+	    		font2.drawString( DEFAULT_WIDTH/4+DEFAULT_WIDTH/8, DEFAULT_HEIGHT/2+DEFAULT_HEIGHT/4+DEFAULT_HEIGHT/8+DEFAULT_HEIGHT/128+LINE_SIZE*1,"Press enter to play");
 	    	}
 	    	
 	    }
