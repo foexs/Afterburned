@@ -70,7 +70,7 @@ public class GUI extends BasicGame {
 	    		g.drawLine(0,game.getShip().getPosition().getY(), DEFAULT_WIDTH,game.ship.getPosition().getY() );
 	    		g.drawLine(0,game.getShip().getPosition().getY()+1, DEFAULT_WIDTH,game.ship.getPosition().getY()+1);
 	    		g.setColor(Color.white);
-	    		g.drawImage(new Image(game.getShip().getShipPath()),game.ship.getPosition().getX(),game.ship.getPosition().getY());
+	    		g.drawImage(new Image(game.getShip().getShipPath()),game.ship.getHitbox().getMinX(),game.ship.getPosition().getY());
 	    		/**
 	    		 * Show the aim 'line'
 	    		 */

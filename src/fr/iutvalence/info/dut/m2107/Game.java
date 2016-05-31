@@ -125,7 +125,7 @@ public class Game {
 		
 	}
 	public void onMouseReleased(int x) {
-		ship.setPosition(new Dot(x-62,ship.getPosition().getY()));
+		ship.setPosition(new Dot(x,ship.getPosition().getY()));
 	}
 	
 	
