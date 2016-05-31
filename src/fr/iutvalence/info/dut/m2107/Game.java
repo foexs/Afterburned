@@ -103,14 +103,12 @@ public class Game {
 		}
 	}
 	
-	public void shoot(){
-		int x1 = this.getShip().getPosition().getX();
-		int y1 = this.getShip().getHitbox().getMinY();
-		float angle=this.getShip().getAngle();
-		int x2= (int) Math.round((GUI.DEFAULT_HEIGHT-y1)/Math.tan(Math.toRadians(angle)))+this.getShip().getPosition().getX();
+	public static void shoot(float angle, int x1, int y1){
+		
+		int x2= (int) Math.round((GUI.DEFAULT_HEIGHT-y1)/Math.tan(Math.toRadians(angle)))+x1;
 		int y2=0;
-		float iX=x1;
-		float iY=y1;
+		int iX=x1;
+		int iY=y1;
 		int xMul=1;
 		if (x2<x1)
 			xMul=-1;
@@ -120,8 +118,10 @@ public class Game {
 		while (iY>1){			
 			if (iX<1){
 				xMul=1;
-				angle=180-angle;
-				x2=(int) Math.round((GUI.DEFAULT_HEIGHT-iY)/Math.tan(Math.toRadians(angle)));
+			}
+			if (iX>GUI.DEFAULT_WIDTH-1){
+				shoot(180-angle,iX-1, iY);
+				return;
 			}
 			
 			if((iX-x1)/(x2-x1)>(iY-y1)/(y2-y1) || x1==x2){
@@ -159,7 +159,7 @@ public class Game {
 
 	public void enterKeyPressed() {
 		// TODO Auto-generated method stub
-		shoot();
+		shoot(this.getShip().getAngle(),this.getShip().getPosition().getX(),this.getShip().getHitbox().getMinY());
 		
 	}
 	public void onMouseReleased(int x) {
