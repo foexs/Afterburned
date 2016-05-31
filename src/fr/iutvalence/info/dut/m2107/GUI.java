@@ -20,9 +20,9 @@ public class GUI extends BasicGame {
 		private TrueTypeFont font2;
 		private TrueTypeFont font3;
 		
-		public Image backgroundGame;
+		private boolean moved;
 		
-		public final String backgroundMenu = ("ihm/background menu_1.png");
+		private final String backgroundMenu = ("ihm/background menu_1.png");
 		
 		public static GameContainer container;
 		/**
@@ -53,7 +53,7 @@ public class GUI extends BasicGame {
 			Font awtFont3 = new Font("Impact", Font.PLAIN, 16);
 			font3 = new TrueTypeFont(awtFont3, true);
     		game.ship.setPosition(new Dot(DEFAULT_WIDTH/2-game.getShipSize(),DEFAULT_HEIGHT-game.getShipSize()*2));
-	        }
+	    	}
 
 	    @Override
 	    public void render(GameContainer container, Graphics g)  throws SlickException {
@@ -70,6 +70,8 @@ public class GUI extends BasicGame {
 	    		g.drawLine(0,game.getShip().getPosition().getY(), DEFAULT_WIDTH,game.ship.getPosition().getY() );
 	    		g.drawLine(0,game.getShip().getPosition().getY()+1, DEFAULT_WIDTH,game.ship.getPosition().getY()+1);
 	    		g.setColor(Color.white);
+	    		font.drawString(DEFAULT_WIDTH/3, DEFAULT_HEIGHT/4,"Move your ship!");
+	    		font3.drawString(DEFAULT_WIDTH/6, DEFAULT_HEIGHT/3,"(Hint: you move by clicking, you can click anywhere you want, just remember you can click only once, so be careful.)");
 	    		/**
 	    		 * Draw the ship
 	    		 */
@@ -78,9 +80,6 @@ public class GUI extends BasicGame {
 	    		 * Show the aim 'line'
 	    		 */
 	    		g.drawLine(game.getShip().getPosition().getX(), game.getShip().getPosition().getY(),(int) Math.round(((DEFAULT_HEIGHT-game.getShip().getHitbox().getMinY()))/Math.tan(Math.toRadians(game.getShip().getAngle())))+game.getShip().getPosition().getX(), 0);
-	    		font.drawString(DEFAULT_WIDTH/3, DEFAULT_HEIGHT/4,"Move your ship!");
-	    		font3.drawString(DEFAULT_WIDTH/6, DEFAULT_HEIGHT/3,"(Hint: you move by clicking, you can click anywhere you want, just remember you can click only once, so be careful.)");
-	    		
 	    	}
 	    	/**
 	    	 * when on menu
