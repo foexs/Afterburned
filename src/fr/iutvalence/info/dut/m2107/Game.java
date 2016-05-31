@@ -104,10 +104,14 @@ public class Game {
 	}
 	
 	public void rightKeyPressed(){
-		
+		if (this.ship.getAngle()>5){
+			this.ship.setAngle(this.ship.getAngle()-5);
+		}
 	}
 	public void leftKeyPressed(){
-		
+		if (this.ship.getAngle()<175){
+			this.ship.setAngle(this.ship.getAngle()+5);
+		}
 	}
 
 	public void upKeyPressed() {
@@ -116,8 +120,7 @@ public class Game {
 	}
 
 	public void downKeyPressed() {
-		// TODO Auto-generated method stub
-		
+				
 	}
 
 	public void enterKeyPressed() {
