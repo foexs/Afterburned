@@ -22,7 +22,7 @@ public class Ship {
 		this.weapon = currentWeapon;
 		this.hull = currentHull;
 		this.position = shipPosition;
-		this.angle = 0;
+		this.angle = 90;
 		this.damageBonus=0;
 		this.size = shipSize;
 	}
@@ -78,7 +78,20 @@ public class Ship {
 		return this.position;
 	}
 	public void setAngle(float angle) {
-		this.angle = angle;
+		if (angle>=180){
+			this.angle = angle-180;
+		}
+		if (angle<=0.0){
+			this.angle=1;
+		}
+		if (angle>0 && angle<180){
+			this.angle=angle;
+		}	
+		
+		this.angle=angle;
+	}
+	public float getAngle() {
+		return this.angle;
 	}
 	public void setPosition(Dot position)
 	{

@@ -71,6 +71,11 @@ public class GUI extends BasicGame {
 	    		g.drawLine(0,game.getShip().getPosition().getY()+1, DEFAULT_WIDTH,game.ship.getPosition().getY()+1);
 	    		g.setColor(Color.white);
 	    		g.drawImage(new Image(game.getShip().getShipPath()),game.ship.getPosition().getX(),game.ship.getPosition().getY());
+	    		/**
+	    		 * Show the aim 'line'
+	    		 */
+	    		g.drawLine(game.getShip().getPosition().getX(), game.getShip().getPosition().getY(),(int) Math.round(DEFAULT_HEIGHT/Math.tan(Math.toRadians(game.getShip().getAngle())))+game.getShip().getPosition().getX(), 0);
+	    		
 	    		font.drawString(DEFAULT_WIDTH/3, DEFAULT_HEIGHT/4,"Move your ship!");
 	    		font3.drawString(DEFAULT_WIDTH/6, DEFAULT_HEIGHT/3,"(Int: you move by clicking, you can click anywhere you want, just remember you can click only once, so be careful.)");
 	    		
