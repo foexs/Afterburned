@@ -14,34 +14,34 @@ public enum Color {
 	/**
 	 * Red's hexadecimal code
 	 */
-	red(0xff0000),
+	red("0xff0000"),
 	/**
 	 * Green's hexadecimal code
 	 */
-	green(0x00ff00),
+	green("0x00ff00"),
 	/**
 	 * Blue's hexadecimal code
 	 */
-	blue(0x0000ff),
+	blue("0x0000ff"),
 	/**
 	 * Gold's hexadecimal code
 	 */
-	gold(0xffd400),
+	gold("0xffd400"),
 	/**
 	 * grey's hexadecimal code
 	 */
-	grey(0xbbbbbb),
+	grey("0xbbbbbb"),
 	/**
 	 * White's hexadecimal code
 	 */
-	white(0xffffff);
+	white("0xffffff");
 	
 	/**
 	 * the color RGB code 
 	 */
-	int colorCode;
+	String colorCode;
 	
-	private Color(int code)
+	private Color(String code)
 	{
 		this.colorCode=code;
 	}
@@ -49,7 +49,7 @@ public enum Color {
 	/**
 	 * @return the hexadecimal code of the color.
 	 */
-	public int getColorCode(){
+	public String getColorCode(){
 		return this.colorCode;
 	}
 }
