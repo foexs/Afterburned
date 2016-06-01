@@ -79,7 +79,7 @@ public class GUI extends BasicGame {
 	    		/**
 	    		 * Show the aim 'line'
 	    		 */
-	    		g.drawLine(game.getShip().getPosition().getX(), game.getShip().getPosition().getY(),(int) Math.round(((DEFAULT_HEIGHT-game.getShip().getHitbox().getMinY()))/Math.tan(Math.toRadians(game.getShip().getAngle())))+game.getShip().getPosition().getX(), 0);
+	    		g.drawLine(game.getShip().getPosition().getX(), game.getShip().getPosition().getY(),(int) Math.round(((DEFAULT_HEIGHT-game.getShip().getHitbox().getMinY()))/Math.tan(Math.toRadians(game.getShip().getAngle())))+game.getShip().getPosition().getX(), 0);	    		
 	    	}
 	    	/**
 	    	 * when on menu

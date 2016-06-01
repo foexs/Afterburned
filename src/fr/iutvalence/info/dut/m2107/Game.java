@@ -103,38 +103,24 @@ public class Game {
 		}
 	}
 	
-	public static void shoot(float angle, int x1, int y1){
+	public static void shoot(float angle, int xDepart, int yDepart){
 		
-		int x2= (int) Math.round((GUI.DEFAULT_HEIGHT-y1)/Math.tan(Math.toRadians(angle)))+x1;
-		int y2=0;
-		int iX=x1;
-		int iY=y1;
-		int xMul=1;
-		if (x2<x1)
-			xMul=-1;
-		/**
-		 * parcours chaque point de la ligne de tir
-		 */
-		while (iY>1){			
-			if (iX<1){
-				xMul=1;
-			}
-			if (iX>GUI.DEFAULT_WIDTH-1){
-				shoot(180-angle,iX-1, iY);
-				return;
-			}
+		int xArrivee= (int) Math.round((GUI.DEFAULT_HEIGHT-yDepart)/Math.tan(Math.toRadians(angle)))+xDepart;
+		int yArrivee=0;
+		double xActuel=xDepart;
+		int yActuel=yDepart;
+		int xAParcourir=xDepart-xArrivee;
+		int yAParcourir=yDepart-yArrivee;
+		System.out.println("A parcourir ("+xAParcourir+","+yAParcourir+")");
+		
+		while (yActuel>yArrivee){
+			xActuel = (1/Math.tan(Math.toRadians(angle)))/Math.PI+xActuel; //avancer sur X
+			yActuel--; //avancer sur Y
 			
-			if((iX-x1)/(x2-x1)>(iY-y1)/(y2-y1) || x1==x2){
-				iY--;
-				//TODO: Agir
-			}
-			if((iX-x1)/(x2-x1)<=(iY-y1)/(y2-y1)){
-				iX=iX+xMul;
-				//TODO: Agir
-			}
-			System.out.println("iX= "+iX+" iY= "+iY);			
 		}
-		System.out.println("x2= "+x2);
+		System.out.println("Actuel x,y:"+xActuel+" , "+yActuel);
+		
+		System.out.println("x2= "+xArrivee);
 	}
 	
 	public void rightKeyPressed(){
