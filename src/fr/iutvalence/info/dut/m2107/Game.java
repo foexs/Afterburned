@@ -103,7 +103,7 @@ public class Game {
 		}
 	}
 	
-	public static void shoot(float angle, int xDepart, int yDepart){
+	public void shoot(float angle, int xDepart, int yDepart){
 		
 		int xArrivee= (int) Math.round((GUI.DEFAULT_HEIGHT-yDepart)/Math.tan(Math.toRadians(angle)))+xDepart;
 		int yArrivee=0;
@@ -114,9 +114,24 @@ public class Game {
 		System.out.println("A parcourir ("+xAParcourir+","+yAParcourir+")");
 		
 		while (yActuel>yArrivee){
+			
 			xActuel = (1/Math.tan(Math.toRadians(angle)))/Math.PI+xActuel; //avancer sur X
 			yActuel--; //avancer sur Y
-			
+
+			for(int i=0; i<this.entities.size()-1;i++){//Parcourir les entités
+				int xBuf=(int) Math.round(xActuel);
+				if(new Hitbox(xBuf,yActuel,xBuf,yActuel).isIn(this.entities.get(i).getHitbox())){
+					this.entities.get(i).heal(-this.getShip().getDamage());//Damage entity
+					
+					if(this.entities.get(i).getHealth()<=0){
+						this.entities.remove(i);
+					}
+				}
+			}
+			if (Math.round(xActuel)<=0||Math.round(xActuel)>=GUI.DEFAULT_WIDTH){
+				angle=180-angle;
+				yActuel++; //avancer sur Y
+			}
 		}
 		System.out.println("Actuel x,y:"+xActuel+" , "+yActuel);
 		

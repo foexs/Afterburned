@@ -45,6 +45,10 @@ public class Entity {
 		return this.health;
 	}
 	
+	public void heal(int heal){
+		this.health=this.health+heal;
+	}
+	
 	public Hitbox getHitbox(){
 		return new Hitbox(this.position.getX()-this.size,this.position.getX()+this.size,this.position.getY()-this.size,this.position.getY()+this.size);
 	}
