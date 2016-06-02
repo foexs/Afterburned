@@ -72,6 +72,11 @@ public class GUI extends BasicGame {
 	    		g.setColor(Color.white);
 	    		font.drawString(DEFAULT_WIDTH/3, DEFAULT_HEIGHT/4,"Move your ship!");
 	    		font3.drawString(DEFAULT_WIDTH/6, DEFAULT_HEIGHT/3,"(Hint: you move by clicking, you can click anywhere you want, just remember you can click only once, so be careful.)");
+	    		
+	    		for (int i=0; i<game.getEntities().size(); i++){
+	    			Entity entity=game.getEntities().get(i);
+	    			g.drawImage(new Image("ihm/sprite ennemi blanc.png"), entity.getHitbox().getMinX(), entity.getHitbox().getMinY(), entity.getHitbox().getMaxX(), entity.getHitbox().getMaxY(), 0, 0, 43, 45);
+	    		}
 	    		/**
 	    		 * Draw the ship
 	    		 */
