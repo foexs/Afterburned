@@ -8,6 +8,7 @@ public class Entity {
 	private EntityType type;
 	private Enemy enemy;
 	private Item item;
+	private int direction;
 	
 	public Entity(Dot position, Item item){
 		this.position=position;
@@ -15,6 +16,7 @@ public class Entity {
 		this.health=1;
 		this.type =EntityType.ITEM;
 		this.item=(item);
+		this.direction=(int)Math.round(Math.random()*100)+40;
 	}
 	
 	public Entity(Dot position, Enemy enemy){
@@ -23,6 +25,8 @@ public class Entity {
 		this.health=enemy.getHealth();
 		this.type=EntityType.ENEMY;
 		this.enemy=enemy;
+		this.direction=(int)Math.round(Math.random()*100)+40;
+
 	}
 	
 	public Entity(Dot position,int size, int health){
@@ -30,6 +34,8 @@ public class Entity {
 		this.size=size;
 		this.health=health;
 		this.type=(EntityType.GENERAL);
+		this.direction=(int)Math.round(Math.random()*100)+40;
+
 
 	}
 	

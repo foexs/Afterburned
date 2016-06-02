@@ -70,6 +70,12 @@ public class Game {
 		}
 	}
 	
+	public void moveEntities(){
+		for(int i=0; i<this.entities.size(); i++){
+			
+		}
+	}
+	
 	public void spawnItem(Dot position,Item item){
 		entities.add(new Entity(position,item));
 	}
