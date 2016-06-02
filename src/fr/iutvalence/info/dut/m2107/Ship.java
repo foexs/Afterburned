@@ -25,6 +25,7 @@ public class Ship {
 		this.angle = 90;
 		this.damageBonus=0;
 		this.size = shipSize;
+		this.health=(int)this.hull.getProtectionLevel();
 	}
 	//
 	/**

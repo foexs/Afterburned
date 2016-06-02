@@ -80,5 +80,8 @@ public class Hitbox {
 		}
 		return true;
 	}
+	public boolean equals(Hitbox hitbox){
+		return(this.maxX==hitbox.maxX && this.minX==hitbox.minX && this.maxY==hitbox.maxY && this.minY==hitbox.minY);
+	}
 
 }
