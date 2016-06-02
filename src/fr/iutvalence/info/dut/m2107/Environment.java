@@ -1,24 +1,24 @@
 package fr.iutvalence.info.dut.m2107;
 
 public enum Environment {
-	nebula("ihm/nebulab.png",50,0,0,50),
-	asteroidField("ihm/asteroid.png",0,50,0,50),
-	sunbelt("ihm/sun.png", 0, 0, 10, 50),
-	orbit("ihm/orbitl.png", 0, 0, 0, 80),
-	emptySpace("ihm/empty.png", 0, 0, 0, 50);
+	nebula("ihm/nebulab.png",50,0,0,0.15),
+	asteroidField("ihm/asteroid.png",0,0.50,0,0.15),
+	sunbelt("ihm/sun.png", 0, 0, 10, 0.15),
+	orbit("ihm/orbitl.png", 0, 0, 0, 0.5),
+	emptySpace("ihm/empty.png", 0, 0, 0, 0.15);
 	
 	
 	//Nebula
 	int fogLevel;
 	//asteroidField
-	int asteroidSpawnRate;
+	double asteroidSpawnRate;
 	//sunBelt
 	/*
 	 * sunDamage will set how much damage the player takes. I'll increase as the player gets closer to it.
 	 */
 	int sunDamage;
 
-	int enemySpawnRate;
+	double enemySpawnRate;
 	
 	String backgroundPath;
 	
@@ -27,7 +27,7 @@ public enum Environment {
 	
 	
 	
-	private Environment(String backgroundPath, int fogLevel, int asteroidSpawnRate, int sunDamage, int enemySpawnRate){
+	private Environment(String backgroundPath, int fogLevel, double asteroidSpawnRate, int sunDamage, double enemySpawnRate){
 		this.backgroundPath=backgroundPath;
 		this.fogLevel=fogLevel;
 		this.asteroidSpawnRate=asteroidSpawnRate;
@@ -39,13 +39,13 @@ public enum Environment {
 	public String getBackgroundPath() {
 		return backgroundPath;
 	}
-	public int getEnemySpawnRate() {
+	public double getEnemySpawnRate() {
 		return enemySpawnRate;
 	}
 	public int getFogLevel() {
 		return fogLevel;
 	}
-	public int getAsteroidSpawnRate() {
+	public double getAsteroidSpawnRate() {
 		return asteroidSpawnRate;
 	}
 	public int getSunDamage() {

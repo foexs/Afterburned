@@ -13,6 +13,7 @@ public class Game {
 	private int score;
 	protected Ship ship;
 	public static final int DEFAULT_SHIP_SIZE=62;
+	public static final double ITEM_SPAWN_RATE=0.15;
 	private static final double MAX_ROCK_HEALTH = 100000;
 	private LinkedList<Entity> entities;
 	/**
@@ -57,11 +58,11 @@ public class Game {
 	 */
 	public void spawnRandomly(double itemRate, double enemyRate, double rockRate, ItemSet itemSet, EnemySet enemySet ){
 		if(Math.random()<itemRate){
-			spawnItem(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 0), itemSet.getItems().get((int)Math.round(Math.random()*itemSet.getItems().size())));
+			spawnItem(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 0), itemSet.getItems().get((int)Math.round(Math.random()*(itemSet.getItems().size()-1))));
 		}
 		
 		if(Math.random()<enemyRate){
-			spawnEnemy(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 0), enemySet.getEnemies().get((int)Math.round(Math.random()*enemySet.getEnemies().size())));
+			spawnEnemy(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 0), enemySet.getEnemies().get((int)Math.round(Math.random()*(enemySet.getEnemies().size()-1))));
 		}
 		
 		if(Math.random()<rockRate){
@@ -134,14 +135,9 @@ public class Game {
 	
 	public void shoot(float angle, int xDepart, int yDepart){
 		
-		int xArrivee= (int) Math.round((GUI.DEFAULT_HEIGHT-yDepart)/Math.tan(Math.toRadians(angle)))+xDepart;
 		int yArrivee=0;
 		double xActuel=xDepart;
 		int yActuel=yDepart;
-		int xAParcourir=xDepart-xArrivee;
-		int yAParcourir=yDepart-yArrivee;
-		System.out.println("A parcourir ("+xAParcourir+","+yAParcourir+")");
-		
 		while (yActuel>yArrivee){
 			
 			xActuel = (1/Math.tan(Math.toRadians(angle)))/Math.PI+xActuel; //avancer sur X
@@ -162,9 +158,6 @@ public class Game {
 				yActuel++; //avancer sur Y
 			}
 		}
-		System.out.println("Actuel x,y:"+xActuel+" , "+yActuel);
-		
-		System.out.println("x2= "+xArrivee);
 	}
 	
 	public void rightKeyPressed(){
@@ -190,6 +183,10 @@ public class Game {
 	public void enterKeyPressed() {
 		// TODO Auto-generated method stub
 		shoot(this.getShip().getAngle(),this.getShip().getPosition().getX(),this.getShip().getHitbox().getMinY());
+		spawnRandomly(ITEM_SPAWN_RATE,this.menu.currentEnvironment.getEnemySpawnRate(),this.menu.currentEnvironment.getAsteroidSpawnRate(), this.menu.is, this.menu.es);
+		moveEntities();
+		collisionUpdate();
+		
 		
 	}
 	public void onMouseReleased(int x) {
