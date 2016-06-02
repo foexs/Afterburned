@@ -91,4 +91,19 @@ public class Entity {
 	public int getSpeed() {
 		return speed;
 	}
+	
+	public Easy_Color getColor(){
+		if (this.type==EntityType.GENERAL)
+			return Easy_Color.white;
+		
+		if (this.type==EntityType.ITEM)
+			return Easy_Color.blue;
+		
+		if (this.type==EntityType.ENEMY)
+			return enemy.getColor();
+		
+		return Easy_Color.grey;
+		
+		
+	}
 }

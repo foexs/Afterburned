@@ -16,7 +16,7 @@ public class EnemySet {
 	private int health=0;
 	private int size=5;
 	private int speed=2;
-	private Color color=Color.grey;
+	private Easy_Color color=Easy_Color.grey;
 	
 
 	/**
@@ -44,7 +44,7 @@ public class EnemySet {
 						line= line+cc;
 					}
 					if (recordColor){
-						color=Color.valueOf(line);
+						color=Easy_Color.valueOf(line);
 						recordColor=false;
 					}
 					if (recordHealth){

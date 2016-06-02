@@ -6,9 +6,9 @@ public class Enemy{
 	private int health;
 	private int size;
 	private int damage;
-	private Color color;
+	private Easy_Color color;
 	
-	public Enemy(int speed, int size, int health, int damage, Color color)
+	public Enemy(int speed, int size, int health, int damage, Easy_Color color)
 	{
 		this.speed=speed;
 		this.health=health;
@@ -34,7 +34,7 @@ public class Enemy{
 		return speed;
 	}
 
-	public Color getColor() {
+	public Easy_Color getColor() {
 		return color;
 	}
 	
