@@ -8,8 +8,10 @@ import java.util.Scanner;
 
 public class EnemySet {
 
-	public List<Enemy> enemies=new LinkedList<Enemy>();
+	private List<Enemy> enemies=new LinkedList<Enemy>();
 	
+
+
 	private int damage=0;
 	private int health=0;
 	private int size=5;
@@ -89,7 +91,9 @@ public class EnemySet {
 				System.out.println("File not found");
 				}
 		}
-	
+	public List<Enemy> getEnemies() {
+		return enemies;
+	}
 	/**
 	 * Display the list of Items available
 	 */

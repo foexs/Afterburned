@@ -47,13 +47,13 @@ public class Game {
 		return entities;
 	}
 	
-	public void spawnRandomly(double itemRate, double enemyRate, ItemSet set){
+	public void spawnRandomly(double itemRate, double enemyRate, ItemSet itemSet, EnemySet enemySet ){
 		if(Math.random()<itemRate){
-			spawnItem(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 0), set.getItems().get((int)Math.round(Math.random()*set.getItems().size())));
+			spawnItem(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 0), itemSet.getItems().get((int)Math.round(Math.random()*itemSet.getItems().size())));
 		}
 		
 		if(Math.random()<enemyRate){
-			
+			spawnEnemy(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 0), enemySet.getEnemies().get((int)Math.round(Math.random()*enemySet.getEnemies().size())));
 		}
 	}
 	
