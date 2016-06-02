@@ -4,7 +4,7 @@ package fr.iutvalence.info.dut.m2107;
  * @author reynloui
  *
  */
-public enum Color {
+public enum Easy_Color {
 	
 	
 	/**
@@ -41,7 +41,7 @@ public enum Color {
 	 */
 	String colorCode;
 	
-	private Color(String code)
+	private Easy_Color(String code)
 	{
 		this.colorCode=code;
 	}

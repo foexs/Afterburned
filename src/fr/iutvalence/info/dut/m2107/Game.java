@@ -58,16 +58,16 @@ public class Game {
 	 */
 	public void spawnRandomly(double itemRate, double enemyRate, double rockRate, ItemSet itemSet, EnemySet enemySet ){
 		if(Math.random()<itemRate){
-			spawnItem(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 0), itemSet.getItems().get((int)Math.round(Math.random()*(itemSet.getItems().size()-1))));
+			spawnItem(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 100), itemSet.getItems().get((int)Math.round(Math.random()*(itemSet.getItems().size()-1))));
 		}
 		
 		if(Math.random()<enemyRate){
-			spawnEnemy(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 0), enemySet.getEnemies().get((int)Math.round(Math.random()*(enemySet.getEnemies().size()-1))));
+			spawnEnemy(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 100), enemySet.getEnemies().get((int)Math.round(Math.random()*(enemySet.getEnemies().size()-1))));
 		}
 		
 		if(Math.random()<rockRate){
 			int solidity=(int)Math.round(Math.random()*MAX_ROCK_HEALTH);
-			spawnEntity(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 0),solidity/5000, solidity);
+			spawnEntity(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 100),solidity/5000, solidity);
 		}
 	}
 	

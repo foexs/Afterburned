@@ -9,7 +9,7 @@ public class ShipTest extends TestCase {
 	Ship ship;
 	
 	public ShipTest(){
-		this.ship = new Ship(new Weapon(Color.blue, 10, "Arme"),new Hull(Color.blue, 10, "Bouclier"),new Dot(600, 200),SIZE);
+		this.ship = new Ship(new Weapon(Easy_Color.blue, 10, "Arme"),new Hull(Easy_Color.blue, 10, "Bouclier"),new Dot(600, 200),SIZE);
 	}
 	
 	 @Test
