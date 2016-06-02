@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class ItemSet {
 
-	public List items=new LinkedList();
+	private List<Item> items=new LinkedList<Item>();
 	
 	private int damageIncrease=0;
 	private int healthIncrease=0;
@@ -30,8 +30,6 @@ public class ItemSet {
 				boolean recordDamageIncrease=false;
 				boolean recordHealthIncrease=false;
 				boolean recordSize=false;
-				int i=0;
-
 				scan = new Scanner(new File(filename));
 				
 				while (scan.hasNextLine()) {
@@ -73,7 +71,6 @@ public class ItemSet {
 						damageIncrease=0;
 						healthIncrease=0;
 						size=5;
-						i++;
 					}
 					}
 				} finally {
@@ -85,7 +82,9 @@ public class ItemSet {
 				System.out.println("File not found");
 				}
 		}
-	
+	public List<Item> getItems() {
+		return items;
+	}
 	/**
 	 * Display the list of Items available
 	 */

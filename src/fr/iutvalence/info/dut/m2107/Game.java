@@ -47,6 +47,16 @@ public class Game {
 		return entities;
 	}
 	
+	public void spawnRandomly(double itemRate, double enemyRate, ItemSet set){
+		if(Math.random()<itemRate){
+			spawnItem(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 0), set.getItems().get((int)Math.round(Math.random()*set.getItems().size())));
+		}
+		
+		if(Math.random()<enemyRate){
+			
+		}
+	}
+	
 	public void spawnItem(Dot position,Item item){
 		entities.add(new Entity(position,item));
 	}
@@ -166,9 +176,5 @@ public class Game {
 	public void onMouseReleased(int x) {
 		ship.setPosition(new Dot(x,ship.getPosition().getY()));
 	}
-	
-	
-	
 
-	
 }

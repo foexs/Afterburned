@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class EnemySet {
 
-	public List enemies=new LinkedList();
+	public List<Enemy> enemies=new LinkedList<Enemy>();
 	
 	private int damage=0;
 	private int health=0;
@@ -33,8 +33,6 @@ public class EnemySet {
 				boolean recordSize=false;
 				boolean recordColor=false;
 				boolean recordSpeed=false;
-				int i=0;
-
 				scan = new Scanner(new File(filename));
 				
 				while (scan.hasNextLine()) {
@@ -80,7 +78,6 @@ public class EnemySet {
 					}
 					if (line.equalsIgnoreCase("]")){
 						enemies.add(new Enemy(this.speed,this.size,this.health,this.damage,this.color));
-						i++;
 						}
 					}
 				} finally {
