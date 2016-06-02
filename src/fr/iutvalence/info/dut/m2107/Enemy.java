@@ -25,7 +25,9 @@ public class Enemy{
 	public int getHealth() {
 		return health;
 	}
-
+	public Hitbox getHitbox(){
+		return new Hitbox(-this.size,this.size,-this.size,this.size);
+	}
 	public int getDamage() {
 		return damage;
 	}

@@ -15,7 +15,7 @@ public class Game {
 	public static final int DEFAULT_SHIP_SIZE=62;
 	public static final double ITEM_SPAWN_RATE=0.15;
 	private static final double MAX_ROCK_HEALTH = 100000;
-	private LinkedList<Entity> entities;
+	protected LinkedList<Entity> entities;
 	/**
 	 * contains the settings
 	 */

@@ -15,7 +15,8 @@ public class GUI extends BasicGame {
 		public static final int DEFAULT_WIDTH=1024;
 		public static final int LINE_SIZE=20;
 		
-	
+		private ItemSet itemset;
+		private EnemySet enemyset;
 		private TrueTypeFont font;
 		private TrueTypeFont font2;
 		private TrueTypeFont font3;
@@ -53,7 +54,9 @@ public class GUI extends BasicGame {
 			Font awtFont3 = new Font("Impact", Font.PLAIN, 16);
 			font3 = new TrueTypeFont(awtFont3, true);
     		game.ship.setPosition(new Dot(DEFAULT_WIDTH/2-game.getShipSize(),DEFAULT_HEIGHT-game.getShipSize()*2));
-	    	}
+	    	this.itemset = new ItemSet();
+	    	this.enemyset = new EnemySet();
+	    }
 
 	    @Override
 	    public void render(GameContainer container, Graphics g)  throws SlickException {
@@ -76,6 +79,24 @@ public class GUI extends BasicGame {
 	    		 * Draw the ship
 	    		 */
 	    		g.drawImage(new Image(game.getShip().getShipPath()),game.ship.getHitbox().getMinX(),game.ship.getPosition().getY());
+	    		
+	    		switch(menu.currentEnvironment)
+	    		{
+	    		case asteroidField:
+	    			game.spawnRandomly(0.15, 0.05, 0.20,  itemset, enemyset);
+	    		case orbit:
+	    			game.spawnRandomly(0.15, 0.20, 0.05, itemset, enemyset);
+	    		case sunbelt:
+	    			game.spawnRandomly(0.15, 0.15, 0.10, itemset, enemyset);
+	    		case nebula:
+	    			game.spawnRandomly(0.15, 0.15, 0.10, itemset, enemyset);
+	    		case emptySpace:
+	    			game.spawnRandomly(0.15, 0.15, 0.10, itemset, enemyset);
+	    		}
+	    		for(int i=0; i < game.getEntities().size(); i++)
+	    		{
+	    			g.drawImage(new Image("ihm/sprite ennemi blanc.png"),enemyset.getEnemies().get(i).getHitbox().getMinX(),enemyset.getEnemies().get(i).getHitbox().getMinY());
+	    		}
 	    		/**
 	    		 * Show the aim 'line'
 	    		 */
@@ -99,7 +120,7 @@ public class GUI extends BasicGame {
 	    	}
 	    	
 	    }
-
+	    
 	    @Override
 	    public void update(GameContainer container, int delta) throws SlickException {
 	    		
