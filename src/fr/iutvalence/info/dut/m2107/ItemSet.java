@@ -12,7 +12,7 @@ public class ItemSet {
 	
 	private int damageIncrease=0;
 	private int healthIncrease=0;
-	private int size=5;
+	private int size=10;
 	private boolean bomb=false;
 	
 
