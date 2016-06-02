@@ -47,7 +47,14 @@ public class Game {
 	public LinkedList<Entity> getEntities() {
 		return entities;
 	}
-	
+	/**
+	 * 
+	 * @param itemRate >=0 and <1 rate of itemSpawn, "normal value" should be around 0.15
+	 * @param enemyRate >=0 and <1 rate of itemSpawn, "normal value" should be around 0.15
+	 * @param rockRate >=0 and <1 rate of itemSpawn, "normal value" should be around 0.15
+	 * @param itemSet where to find the items to spawn
+	 * @param enemySet where to find the enemies to spawn
+	 */
 	public void spawnRandomly(double itemRate, double enemyRate, double rockRate, ItemSet itemSet, EnemySet enemySet ){
 		if(Math.random()<itemRate){
 			spawnItem(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 0), itemSet.getItems().get((int)Math.round(Math.random()*itemSet.getItems().size())));
