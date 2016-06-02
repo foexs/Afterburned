@@ -2,11 +2,11 @@ package fr.iutvalence.info.dut.m2107;
 
 public class Entity {
 	
+	public static final int DEFAULT_SPEED=10;
 	private int size;
 	private int health;
+	private int speed;
 	private Dot position;
-
-
 	private EntityType type;
 	private Enemy enemy;
 	private Item item;
@@ -19,6 +19,7 @@ public class Entity {
 		this.type =EntityType.ITEM;
 		this.item=(item);
 		this.direction=(int)Math.round(Math.random()*100)+40;
+		this.speed=DEFAULT_SPEED;
 	}
 	
 	public Entity(Dot position, Enemy enemy){
@@ -28,6 +29,7 @@ public class Entity {
 		this.type=EntityType.ENEMY;
 		this.enemy=enemy;
 		this.direction=(int)Math.round(Math.random()*100)+40;
+		this.speed=enemy.getSpeed();
 
 	}
 	
@@ -37,6 +39,7 @@ public class Entity {
 		this.health=health;
 		this.type=(EntityType.GENERAL);
 		this.direction=(int)Math.round(Math.random()*100)+40;
+		this.speed=DEFAULT_SPEED;
 
 
 	}
@@ -75,5 +78,17 @@ public class Entity {
 
 	public Enemy getEnemy() {
 		return enemy;
+	}
+
+	public int getDirection() {
+		return direction;
+	}
+
+	public void setDirection(int direction) {
+		this.direction = direction;
+	}
+
+	public int getSpeed() {
+		return speed;
 	}
 }

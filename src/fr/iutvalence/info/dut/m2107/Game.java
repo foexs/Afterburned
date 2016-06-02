@@ -72,7 +72,7 @@ public class Game {
 	
 	public void moveEntities(){
 		for(int i=0; i<this.entities.size(); i++){
-			
+			this.entities.get(i).setPosition(new Dot( (int) ((1/Math.tan(Math.toRadians(this.entities.get(i).getDirection())))/Math.PI+this.entities.get(i).getPosition().getX()) , this.entities.get(i).getPosition().getY()+this.entities.get(i).getSpeed()));
 		}
 	}
 	
