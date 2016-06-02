@@ -13,6 +13,7 @@ public class Game {
 	private int score;
 	protected Ship ship;
 	public static final int DEFAULT_SHIP_SIZE=62;
+	private static final double MAX_ROCK_HEALTH = 100000;
 	private LinkedList<Entity> entities;
 	/**
 	 * contains the settings
@@ -47,13 +48,18 @@ public class Game {
 		return entities;
 	}
 	
-	public void spawnRandomly(double itemRate, double enemyRate, ItemSet itemSet, EnemySet enemySet ){
+	public void spawnRandomly(double itemRate, double enemyRate, double rockRate, ItemSet itemSet, EnemySet enemySet ){
 		if(Math.random()<itemRate){
 			spawnItem(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 0), itemSet.getItems().get((int)Math.round(Math.random()*itemSet.getItems().size())));
 		}
 		
 		if(Math.random()<enemyRate){
 			spawnEnemy(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 0), enemySet.getEnemies().get((int)Math.round(Math.random()*enemySet.getEnemies().size())));
+		}
+		
+		if(Math.random()<rockRate){
+			int solidity=(int)Math.round(Math.random()*MAX_ROCK_HEALTH);
+			spawnEntity(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 0),solidity/5000, solidity);
 		}
 	}
 	
