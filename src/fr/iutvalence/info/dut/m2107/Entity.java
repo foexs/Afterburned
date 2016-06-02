@@ -5,6 +5,8 @@ public class Entity {
 	private int size;
 	private int health;
 	private Dot position;
+
+
 	private EntityType type;
 	private Enemy enemy;
 	private Item item;
@@ -45,6 +47,10 @@ public class Entity {
 	
 	public Dot getPosition(){
 		return this.position;
+	}
+	
+	public void setPosition(Dot position) {
+		this.position = position;
 	}
 	
 	public int getHealth(){
