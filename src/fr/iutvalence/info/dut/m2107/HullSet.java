@@ -30,7 +30,7 @@ public class HullSet {
 				scan = new Scanner(new File(filename));
 				
 				int protection=1;
-				Easy_Color color=Easy_Color.grey;
+				EasyColor color=EasyColor.grey;
 				String name="Default";
 				
 				while (scan.hasNextLine()) {
@@ -44,7 +44,7 @@ public class HullSet {
 						recordName=false;
 					}
 					if (recordColor){
-						color=Easy_Color.valueOf(line);
+						color=EasyColor.valueOf(line);
 						recordColor=false;
 					}
 					if (recordProtection){

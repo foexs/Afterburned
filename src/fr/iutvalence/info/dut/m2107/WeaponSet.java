@@ -24,7 +24,7 @@ public class WeaponSet {
 				scan = new Scanner(new File(filename));
 				
 				int damage=1;
-				Easy_Color color=Easy_Color.grey;
+				EasyColor color=EasyColor.grey;
 				
 				while (scan.hasNextLine()) {
 					
@@ -34,7 +34,7 @@ public class WeaponSet {
 					}
 					
 					if (recordColor){
-						color=Easy_Color.valueOf(line);
+						color=EasyColor.valueOf(line);
 						recordColor=false;
 					}
 					if (recordDamage){

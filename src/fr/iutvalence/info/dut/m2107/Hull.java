@@ -7,7 +7,7 @@ package fr.iutvalence.info.dut.m2107;
 public class Hull {
 
 	
-	private final Easy_Color hullColor;
+	private final EasyColor hullColor;
 	private final float protectionLevel;
 	private final String name;
 	private String hullPath;
@@ -17,7 +17,7 @@ public class Hull {
 	 * @param protection : Defines what is the hull resistance. Higher rate will reduce the damages taken by the player.
 	 * @param name : Each hull has a name.
 	 */
-	public Hull(Easy_Color color, int protection, String name) {
+	public Hull(EasyColor color, int protection, String name) {
 		this.hullColor=color;
 		this.protectionLevel=protection;
 		this.name=name;
@@ -47,7 +47,7 @@ public class Hull {
 	/**
 	 * @return hullColor, the current color of the ship.
 	 */
-	public Easy_Color getHullColor() {
+	public EasyColor getHullColor() {
 		return this.hullColor;
 	}
 	
