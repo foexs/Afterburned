@@ -7,6 +7,14 @@ public class Hitbox {
 	private int minY;
 	private int maxY;
 	
+	/**
+	 * Makes an hitbox with two coordinates
+	 * 
+	 * @param xmin the x of the top left
+	 * @param xmax the x of the bottom right
+	 * @param ymin the y of the top left
+	 * @param ymax the y of the bottom right
+	 */
 	public Hitbox(int xmin, int xmax, int ymin, int ymax)
 	{
 		if (xmin<xmax){
@@ -27,41 +35,42 @@ public class Hitbox {
 		}
 		
 	}
-
+	
+	/**
+	 * 
+	 * @return minX
+	 */
 	public int getMinX() {
 		return minX;
 	}
-
-	public void setMinX(int minX) {
-		this.minX = minX;
-	}
+	
 
 	public int getMaxX() {
 		return maxX;
 	}
 
-	public void setMaxX(int maxX) {
-		this.maxX = maxX;
-	}
 
 	public int getMinY() {
 		return minY;
 	}
 
-	public void setMinY(int minY) {
-		this.minY = minY;
-	}
-
 	public int getMaxY() {
 		return maxY;
 	}
-
-	public void setMaxY(int maxY) {
-		this.maxY = maxY;
-	}
+	
+	/**
+	 * 
+	 * @param hitbox
+	 * @return true if a part of the hitbox touches an other
+	 */
 	public boolean isIn(Hitbox hitbox){
 		return (touchesX(hitbox) && touchesY(hitbox));
 	}
+	/**
+	 * 
+	 * @param hitbox of the second object
+	 * @return true if the two hitoxes are aligned in x
+	 */
 	public boolean touchesX(Hitbox hitbox){
 		if (this.minX<hitbox.minX && this.maxX<hitbox.minX){
 			return false;
@@ -71,6 +80,12 @@ public class Hitbox {
 		}
 		return true;
 	}
+	
+	/**
+	 * 
+	 * @param hitbox of the second object
+	 * @return true if the two hitoxes are aligned in y
+	 */
 	public boolean touchesY(Hitbox hitbox){
 		if (this.minY<hitbox.minY && this.maxY<hitbox.minY){
 			return false;
@@ -80,6 +95,12 @@ public class Hitbox {
 		}
 		return true;
 	}
+	
+	/**
+	 * 
+	 * @param hitbox of the second object
+	 * @return true if the two hitboxes are absolutly the same
+	 */
 	public boolean equals(Hitbox hitbox){
 		return(this.maxX==hitbox.maxX && this.minX==hitbox.minX && this.maxY==hitbox.maxY && this.minY==hitbox.minY);
 	}
