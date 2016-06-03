@@ -8,12 +8,9 @@ public enum Environment {
 	emptySpace("ihm/empty.png", 0, 0, 0, 0.15);
 	
 	
-	//Nebula
 	int fogLevel;
-	//asteroidField
 	double asteroidSpawnRate;
-	//sunBelt
-	/*
+	/**
 	 * sunDamage will set how much damage the player takes. I'll increase as the player gets closer to it.
 	 */
 	int sunDamage;

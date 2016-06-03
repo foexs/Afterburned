@@ -69,28 +69,50 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * Move all the entities on the screen
+	 */
 	public void moveEntities(){
 		for(int i=0; i<this.entities.size(); i++){
 			this.entities.get(i).setPosition(new Dot( (int) ((1/Math.tan(Math.toRadians(this.entities.get(i).getDirection())))/Math.PI+this.entities.get(i).getPosition().getX()) , this.entities.get(i).getPosition().getY()+this.entities.get(i).getSpeed()));
 		}
 	}
 	
+	/**
+	 * Add an entity containing an item to the game's entity list
+	 * @param position
+	 * @param item
+	 */
 	public void spawnItem(Dot position,Item item){
 		entities.add(new Entity(position,item));
 	}
+	/**
+	 * Add an entity containing an enemy to the game's entity list
+	 * @param position
+	 * @param item
+	 */
 	public void spawnEnemy(Dot position,Enemy enemy){
 		entities.add(new Entity(position,enemy));
 	}
+	/**
+	 * Add a general entity to the game's entity list
+	 * @param position
+	 * @param item
+	 */
 	public void spawnEntity(Dot position,int size, int health){
 		entities.add(new Entity(position, size, health));
 	}
+	
+	/**
+	 * @return ship
+	 */
 	public Ship getShip() {
-		return ship;
-	}	
-	public int getShipSize() {
-		return DEFAULT_SHIP_SIZE;
+		return this.ship;
 	}	
 	
+	/**
+	 * Update damages caused by collisions
+	 */
 	public void collisionUpdate(){
 		for(int i=0; i<this.entities.size()-1;i++){
 			/**
@@ -131,54 +153,79 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * Shoot the laser from the ship with the chosen angle, damage entities if needed
+	 * 
+	 * @param angle shooting angle
+	 * @param xDepart ship's X
+	 * @param yDepart ship's Y
+	 */
 	public void shoot(float angle, int xDepart, int yDepart){
 		
 		int yArrivee=0;
 		double xActuel=xDepart;
 		int yActuel=yDepart;
 		while (yActuel>yArrivee){
-			
-			xActuel = (1/Math.tan(Math.toRadians(angle)))/Math.PI+xActuel; //avancer sur X
-			yActuel--; //avancer sur Y
-
-			for(int i=0; i<this.entities.size()-1;i++){//Parcourir les entités
+			/**
+			 * Move laser's X
+			 */
+			xActuel = (1/Math.tan(Math.toRadians(angle)))/Math.PI+xActuel;
+			/**
+			 * Move laser's Y
+			 */
+			yActuel--; 
+			/**
+			 * For all entities
+			 */
+			for(int i=0; i<this.entities.size()-1;i++){
+				/**
+				 * Look if the laser touched something
+				 */
 				int xBuf=(int) Math.round(xActuel);
 				if(new Hitbox(xBuf,yActuel,xBuf,yActuel).isIn(this.entities.get(i).getHitbox())){
+					/**
+					 * Damage entity
+					 */
 					this.entities.get(i).heal(-this.getShip().getDamage());//Damage entity
-					System.out.println(this.getShip().getDamage());
-					
+					/**
+					 * Destroy entity if it's dead
+					 */
 					if(this.entities.get(i).getHealth()<=0){
 						this.entities.remove(i);
 					}
 				}
 			}
+			/**
+			 * If the laser reach the screen's border, change angle
+			 */
 			if (Math.round(xActuel)<=0||Math.round(xActuel)>=GUI.DEFAULT_WIDTH){
 				angle=180-angle;
-				yActuel++; //avancer sur Y
+				yActuel++;
 			}
 		}
 	}
-	
+	/**
+	 * When right key is pressed and we're in game phase
+	 */
 	public void rightKeyPressed(){
 		if (this.ship.getAngle()>5){
 			this.ship.setAngle(this.ship.getAngle()-5);
 		}
 	}
+	
+	/**
+	 * When left key is pressed and we're in game phase
+	 */
 	public void leftKeyPressed(){
 		if (this.ship.getAngle()<175){
 			this.ship.setAngle(this.ship.getAngle()+5);
 		}
 	}
 
-	public void upKeyPressed() {
-		// TODO Auto-generated method stub
-		
-	}
 
-	public void downKeyPressed() {
-				
-	}
-
+	/**
+	 * When enter key is pressed and we're in game phase
+	 */
 	public void enterKeyPressed() {
 		// TODO Auto-generated method stub
 		shoot(this.getShip().getAngle(),this.getShip().getPosition().getX(),this.getShip().getHitbox().getMinY());
@@ -187,8 +234,11 @@ public class Game {
 		collisionUpdate();
 		
 		
+	/**
+	* When mouse click is released and we're in game phase
+	*/
 	}
-	public void onMouseReleased(int x) {
+		public void onMouseReleased(int x) {
 		ship.setPosition(new Dot(x,ship.getPosition().getY()));
 	}
 

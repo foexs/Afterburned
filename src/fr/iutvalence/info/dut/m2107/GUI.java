@@ -53,7 +53,7 @@ public class GUI extends BasicGame {
 			font3 = new TrueTypeFont(awtFont3, true);
 			Font awtFont4 = new Font("Impact", Font.PLAIN, 8);
 			font4 = new TrueTypeFont(awtFont4, true);
-    		game.ship.setPosition(new Dot(DEFAULT_WIDTH/2-game.getShipSize(),DEFAULT_HEIGHT-game.getShipSize()*2));
+    		game.ship.setPosition(new Dot(DEFAULT_WIDTH/2-game.DEFAULT_SHIP_SIZE,DEFAULT_HEIGHT-game.DEFAULT_SHIP_SIZE*2));
 	    }
 
 	    @Override
@@ -136,7 +136,9 @@ public class GUI extends BasicGame {
 	    public void update(GameContainer container, int delta) throws SlickException {
 	    		
 	    }
-	    
+	    /**
+	     * when mouse is released
+	     */
 	    @Override
 	    public void mouseReleased(int bouton, int x, int y)
 	    {
@@ -146,10 +148,12 @@ public class GUI extends BasicGame {
 	    	}
 	    }
 	    
+	    /**
+	     * when any key is released
+	     */
 	    @Override
-	    public void keyReleased(int key, char c){/*
-	    	 *General keyReleased 
-	    	 */
+	    public void keyReleased(int key, char c){
+	    	
 	        if (Input.KEY_ESCAPE == key) {
 	            container.exit();
 	        }
@@ -188,7 +192,7 @@ public class GUI extends BasicGame {
 	        
 			if (Input.KEY_UP== key){
 				if(this.playing){
-	        		game.upKeyPressed();
+					//Do nothing
 	        	}
 	        	else{
 	        		menu.upKeyPressed();
@@ -198,8 +202,8 @@ public class GUI extends BasicGame {
 			
 			if (Input.KEY_DOWN== key){
 				if(this.playing){
-	        		game.downKeyPressed();
-	        	}
+					//Do nothing
+				}
 	        	else{
 	        		menu.downKeyPressed();
 	        	}
@@ -216,13 +220,23 @@ public class GUI extends BasicGame {
 	        }
 			
 	    }
+	    /**
+	     * Application with GUI
+	     * @param args
+	     * @throws SlickException
+	     */
 	public static void main(String[] args) throws SlickException {
 		new AppGameContainer(new GUI(), DEFAULT_WIDTH, DEFAULT_HEIGHT, false).start();
 	}
 	
-	public static void drawBox(Dot position, int width, int height, Graphics g){
-		
-		
+	/**
+	 * Draw a box with 2 pixels thick borders
+	 * @param position top left hand corner position
+	 * @param width
+	 * @param height
+	 * @param g graphics
+	 */
+	public static void drawBox(Dot position, int width, int height, Graphics g){	
 		g.drawRect(position.getX(), position.getY(), width+2, height+2);
 		g.drawRect(position.getX()+1, position.getY()+1, width, height);
 		
