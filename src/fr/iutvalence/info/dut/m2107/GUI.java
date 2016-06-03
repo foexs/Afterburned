@@ -53,7 +53,8 @@ public class GUI extends BasicGame {
 			font3 = new TrueTypeFont(awtFont3, true);
 			Font awtFont4 = new Font("Impact", Font.PLAIN, 8);
 			font4 = new TrueTypeFont(awtFont4, true);
-    		game.ship.setPosition(new Dot(DEFAULT_WIDTH/2-game.DEFAULT_SHIP_SIZE,DEFAULT_HEIGHT-game.DEFAULT_SHIP_SIZE*2));
+    		this.moved=false;
+			game.ship.setPosition(new Dot(DEFAULT_WIDTH/2-game.DEFAULT_SHIP_SIZE,DEFAULT_HEIGHT-game.DEFAULT_SHIP_SIZE*2));
 	    }
 
 	    @Override
@@ -71,9 +72,11 @@ public class GUI extends BasicGame {
 	    		g.drawLine(0,game.getShip().getPosition().getY(), DEFAULT_WIDTH,game.ship.getPosition().getY() );
 	    		g.drawLine(0,game.getShip().getPosition().getY()+1, DEFAULT_WIDTH,game.ship.getPosition().getY()+1);
 	    		g.setColor(Color.white);
+	    		if(this.moved=false)
+	    		{
 	    		font.drawString(DEFAULT_WIDTH/3, DEFAULT_HEIGHT/4,"Move your ship!");
 	    		font3.drawString(DEFAULT_WIDTH/6, DEFAULT_HEIGHT/3,"(Hint: you move by clicking, you can click anywhere you want, just remember you can click only once, so be careful.)");
-	    		
+	    		}
 	    		/**
 	    		 * draw entities
 	    		 */
@@ -90,6 +93,7 @@ public class GUI extends BasicGame {
 	    			case GENERAL:
 	    				g.drawImage(new Image("ihm/asteroid_sprite.png"), entity.getHitbox().getMinX(), entity.getHitbox().getMinY(), entity.getHitbox().getMaxX(), entity.getHitbox().getMaxY(), 0, 0, 43, 45,Color.decode(entity.getColor().getColorCode()));
 	    				break;
+	    				
 	    			}	
 	    		}
 	    		/**
@@ -110,8 +114,10 @@ public class GUI extends BasicGame {
 	    		for(int i=0; i<10;i++)
 	    		{	
 	    			g.drawRect(11+i*21,741,20,15);
-	    			font4.drawString(15+i*21,741,Integer.toString(game.getShip().getHealth()));
+	    			if(game.getShip().getHealth()>i*game.getShip().getHealth()/10)
+	    				font4.drawString(18+i*21,741,Integer.toString(game.getShip().getHealth()/10));
 	    		}
+	    		this.moved=true;
 	    	}
 	    	/**
 	    	 * when on menu
