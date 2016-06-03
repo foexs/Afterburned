@@ -25,16 +25,22 @@ public class Hull {
 		{
 		case white:
 			this.hullPath="ihm/aperçu vaisseau blanc.png";
+			break;
 		case grey:
 			this.hullPath="ihm/aperçu vaisseau gris.png";
+			break;
 		case red:
 			this.hullPath="ihm/aperçu vaisseau rouge.png";
+			break;
 		case gold:
 			this.hullPath="ihm/aperçu vaisseau or.png";
+			break;
 		case blue:
 			this.hullPath="ihm/aperçu vaisseau bleu.png";
+			break;
 		case green:
 			this.hullPath="ihm/aperçu vaisseau vert.png";
+			break;
 		}
 	}
 	

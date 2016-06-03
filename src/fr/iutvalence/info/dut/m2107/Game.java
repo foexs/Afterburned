@@ -34,9 +34,7 @@ public class Game {
 		entities = new LinkedList<Entity>();
 
 	}
-	public void enemyTurn(){
-		
-	}
+	
 	/**
 	 * @return 
 	 */
@@ -58,16 +56,16 @@ public class Game {
 	 */
 	public void spawnRandomly(double itemRate, double enemyRate, double rockRate, ItemSet itemSet, EnemySet enemySet ){
 		if(Math.random()<itemRate){
-			spawnItem(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 100), itemSet.getItems().get((int)Math.round(Math.random()*(itemSet.getItems().size()-1))));
+			spawnItem(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 0), itemSet.getItems().get((int)Math.round(Math.random()*(itemSet.getItems().size()-1))));
 		}
 		
 		if(Math.random()<enemyRate){
-			spawnEnemy(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 100), enemySet.getEnemies().get((int)Math.round(Math.random()*(enemySet.getEnemies().size()-1))));
+			spawnEnemy(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 0), enemySet.getEnemies().get((int)Math.round(Math.random()*(enemySet.getEnemies().size()-1))));
 		}
 		
 		if(Math.random()<rockRate){
 			int solidity=(int)Math.round(Math.random()*MAX_ROCK_HEALTH);
-			spawnEntity(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 100),solidity/5000, solidity);
+			spawnEntity(new Dot((int)Math.round(Math.random()*GUI.DEFAULT_WIDTH), 0),solidity/5000, solidity);
 		}
 	}
 	
@@ -147,6 +145,7 @@ public class Game {
 				int xBuf=(int) Math.round(xActuel);
 				if(new Hitbox(xBuf,yActuel,xBuf,yActuel).isIn(this.entities.get(i).getHitbox())){
 					this.entities.get(i).heal(-this.getShip().getDamage());//Damage entity
+					System.out.println(this.getShip().getDamage());
 					
 					if(this.entities.get(i).getHealth()<=0){
 						this.entities.remove(i);

@@ -15,8 +15,6 @@ public class GUI extends BasicGame {
 		public static final int DEFAULT_WIDTH=1024;
 		public static final int LINE_SIZE=20;
 		
-		private ItemSet itemset;
-		private EnemySet enemyset;
 		private TrueTypeFont font;
 		private TrueTypeFont font2;
 		private TrueTypeFont font3;
@@ -56,8 +54,6 @@ public class GUI extends BasicGame {
 			Font awtFont4 = new Font("Impact", Font.PLAIN, 8);
 			font4 = new TrueTypeFont(awtFont4, true);
     		game.ship.setPosition(new Dot(DEFAULT_WIDTH/2-game.getShipSize(),DEFAULT_HEIGHT-game.getShipSize()*2));
-	    	this.itemset = new ItemSet();
-	    	this.enemyset = new EnemySet();
 	    }
 
 	    @Override
@@ -87,10 +83,13 @@ public class GUI extends BasicGame {
 	    			{
 	    			case ENEMY:
 	    				g.drawImage(new Image("ihm/sprite ennemi blanc.png"), entity.getHitbox().getMinX(), entity.getHitbox().getMinY(), entity.getHitbox().getMaxX(), entity.getHitbox().getMaxY(), 0, 0, 43, 45,Color.decode(entity.getColor().getColorCode()));
+	    				break;
 	    			case ITEM:
 	    				g.drawImage(new Image("ihm/item.png"), entity.getHitbox().getMinX(), entity.getHitbox().getMinY(), entity.getHitbox().getMaxX(), entity.getHitbox().getMaxY(), 0, 0, 43, 45,Color.decode(entity.getColor().getColorCode()));
+	    				break;
 	    			case GENERAL:
 	    				g.drawImage(new Image("ihm/asteroid_sprite.png"), entity.getHitbox().getMinX(), entity.getHitbox().getMinY(), entity.getHitbox().getMaxX(), entity.getHitbox().getMaxY(), 0, 0, 43, 45,Color.decode(entity.getColor().getColorCode()));
+	    				break;
 	    			}	
 	    		}
 	    		/**

@@ -2,7 +2,7 @@ package fr.iutvalence.info.dut.m2107;
 
 public class Entity {
 	
-	public static final int DEFAULT_SPEED=10;
+	public static final int DEFAULT_SPEED=50;
 	private int size;
 	private int health;
 	private int speed;
@@ -94,7 +94,7 @@ public class Entity {
 	
 	public EasyColor getColor(){
 		if (this.type==EntityType.GENERAL)
-			return EasyColor.white;
+			return EasyColor.green;
 		
 		if (this.type==EntityType.ITEM)
 			return EasyColor.blue;
