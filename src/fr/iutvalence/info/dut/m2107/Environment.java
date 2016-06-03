@@ -7,23 +7,37 @@ public enum Environment {
 	orbit("ihm/orbitl.png", 0, 0, 0, 0.5),
 	emptySpace("ihm/empty.png", 0, 0, 0, 0.15);
 	
-	
+	/**
+	 * How is the visibility obscured
+	 */
 	int fogLevel;
+	/**
+	 * Asteroid spawn rate
+	 */
 	double asteroidSpawnRate;
 	/**
-	 * sunDamage will set how much damage the player takes. I'll increase as the player gets closer to it.
+	 * sunDamage will set how much damage the player takes.
 	 */
 	int sunDamage;
-
+	/**
+	 * enemy spawn rate
+	 */
 	double enemySpawnRate;
-	
+	/**
+	 * The path of the background of the environment
+	 */
 	String backgroundPath;
 	
-	//emptySpace
-	//This environment will have no effect on the player.
 	
 	
-	
+	/**
+	 * 
+	 * @param backgroundPath The path of the background of the environment
+	 * @param fogLevel How is the visibility obscured
+	 * @param asteroidSpawnRate Asteroid spawn rate
+	 * @param sunDamage sunDamage will set how much damage the player takes.
+	 * @param enemySpawnRate enemy spawn rate
+	 */
 	private Environment(String backgroundPath, int fogLevel, double asteroidSpawnRate, int sunDamage, double enemySpawnRate){
 		this.backgroundPath=backgroundPath;
 		this.fogLevel=fogLevel;
@@ -31,20 +45,38 @@ public enum Environment {
 		this.sunDamage=sunDamage;
 		this.enemySpawnRate=enemySpawnRate;
 	}
-	//getters
-	
+	/**
+	 * 
+	 * @return backgroundPath
+	 */
 	public String getBackgroundPath() {
 		return backgroundPath;
 	}
+	/**
+	 * 
+	 * @return enemySpawnRate
+	 */ 
 	public double getEnemySpawnRate() {
 		return enemySpawnRate;
 	}
+	/**
+	 * 
+	 * @return fogLevel
+	 */
 	public int getFogLevel() {
 		return fogLevel;
 	}
+	/**
+	 * 
+	 * @return asteroidSpawnRate
+	 */
 	public double getAsteroidSpawnRate() {
 		return asteroidSpawnRate;
 	}
+	/**
+	 * 
+	 * @return sunDamage
+	 */
 	public int getSunDamage() {
 		return sunDamage;
 	}
