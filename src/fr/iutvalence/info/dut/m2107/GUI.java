@@ -20,7 +20,7 @@ public class GUI extends BasicGame {
 		private TrueTypeFont font;
 		private TrueTypeFont font2;
 		private TrueTypeFont font3;
-		
+		private TrueTypeFont font4;
 		private boolean moved;
 		
 		private final String backgroundMenu = ("ihm/background menu_1.png");
@@ -53,6 +53,8 @@ public class GUI extends BasicGame {
 			font2 = new TrueTypeFont(awtFont2, true);
 			Font awtFont3 = new Font("Impact", Font.PLAIN, 16);
 			font3 = new TrueTypeFont(awtFont3, true);
+			Font awtFont4 = new Font("Impact", Font.PLAIN, 8);
+			font4 = new TrueTypeFont(awtFont4, true);
     		game.ship.setPosition(new Dot(DEFAULT_WIDTH/2-game.getShipSize(),DEFAULT_HEIGHT-game.getShipSize()*2));
 	    	this.itemset = new ItemSet();
 	    	this.enemyset = new EnemySet();
@@ -81,34 +83,36 @@ public class GUI extends BasicGame {
 	    		 */
 	    		for (int i=0; i<game.getEntities().size(); i++){
 	    			Entity entity=game.getEntities().get(i);
-	    			g.drawImage(new Image("ihm/sprite ennemi blanc.png"), entity.getHitbox().getMinX(), entity.getHitbox().getMinY(), entity.getHitbox().getMaxX(), entity.getHitbox().getMaxY(), 0, 0, 43, 45,Color.decode(entity.getColor().getColorCode()));
+	    			switch(entity.getType())
+	    			{
+	    			case ENEMY:
+	    				g.drawImage(new Image("ihm/sprite ennemi blanc.png"), entity.getHitbox().getMinX(), entity.getHitbox().getMinY(), entity.getHitbox().getMaxX(), entity.getHitbox().getMaxY(), 0, 0, 43, 45,Color.decode(entity.getColor().getColorCode()));
+	    			case ITEM:
+	    				g.drawImage(new Image("ihm/item.png"), entity.getHitbox().getMinX(), entity.getHitbox().getMinY(), entity.getHitbox().getMaxX(), entity.getHitbox().getMaxY(), 0, 0, 43, 45);
+	    			case GENERAL:
+	    				g.drawImage(new Image("ihm/asteroid_sprite.png"), entity.getHitbox().getMinX(), entity.getHitbox().getMinY(), entity.getHitbox().getMaxX(), entity.getHitbox().getMaxY(), 0, 0, 43, 45);
+	    			}	
 	    		}
 	    		/**
 	    		 * Draw the ship
 	    		 */
 	    		g.drawImage(new Image(game.getShip().getShipPath()),game.ship.getHitbox().getMinX(),game.ship.getPosition().getY());
 	    		
-	    		switch(menu.currentEnvironment)
-	    		{
-	    		case asteroidField:
-	    			game.spawnRandomly(0.15, 0.05, 0.20,  itemset, enemyset);
-	    		case orbit:
-	    			game.spawnRandomly(0.15, 0.20, 0.05, itemset, enemyset);
-	    		case sunbelt:
-	    			game.spawnRandomly(0.15, 0.15, 0.10, itemset, enemyset);
-	    		case nebula:
-	    			game.spawnRandomly(0.15, 0.15, 0.10, itemset, enemyset);
-	    		case emptySpace:
-	    			game.spawnRandomly(0.15, 0.15, 0.10, itemset, enemyset);
-	    		}
-	    		for(int i=0; i < game.getEntities().size(); i++)
-	    		{
-	    			g.drawImage(new Image("ihm/sprite ennemi blanc.png"),enemyset.getEnemies().get(i).getHitbox().getMinX(),enemyset.getEnemies().get(i).getHitbox().getMinY());
-	    		}
 	    		/**
 	    		 * Show the aim 'line'
 	    		 */
 	    		g.drawLine(game.getShip().getPosition().getX(), game.getShip().getPosition().getY(),(int) Math.round(((DEFAULT_HEIGHT-game.getShip().getHitbox().getMinY()))/Math.tan(Math.toRadians(game.getShip().getAngle())))+game.getShip().getPosition().getX(), 0);	    		
+	    		
+	    		/**
+	    		 * Show life bar.
+	    		 */
+	    		g.setColor(Color.green);
+	    		drawBox(new Dot(10,740),210,15,g);
+	    		for(int i=0; i<10;i++)
+	    		{	
+	    			g.drawRect(11+i*21,741,20,15);
+	    			font4.drawString(15+i*21,741,Integer.toString(game.getShip().getHealth()));
+	    		}
 	    	}
 	    	/**
 	    	 * when on menu
