@@ -88,9 +88,9 @@ public class GUI extends BasicGame {
 	    			case ENEMY:
 	    				g.drawImage(new Image("ihm/sprite ennemi blanc.png"), entity.getHitbox().getMinX(), entity.getHitbox().getMinY(), entity.getHitbox().getMaxX(), entity.getHitbox().getMaxY(), 0, 0, 43, 45,Color.decode(entity.getColor().getColorCode()));
 	    			case ITEM:
-	    				g.drawImage(new Image("ihm/item.png"), entity.getHitbox().getMinX(), entity.getHitbox().getMinY(), entity.getHitbox().getMaxX(), entity.getHitbox().getMaxY(), 0, 0, 43, 45);
+	    				g.drawImage(new Image("ihm/item.png"), entity.getHitbox().getMinX(), entity.getHitbox().getMinY(), entity.getHitbox().getMaxX(), entity.getHitbox().getMaxY(), 0, 0, 43, 45,Color.decode(entity.getColor().getColorCode()));
 	    			case GENERAL:
-	    				g.drawImage(new Image("ihm/asteroid_sprite.png"), entity.getHitbox().getMinX(), entity.getHitbox().getMinY(), entity.getHitbox().getMaxX(), entity.getHitbox().getMaxY(), 0, 0, 43, 45);
+	    				g.drawImage(new Image("ihm/asteroid_sprite.png"), entity.getHitbox().getMinX(), entity.getHitbox().getMinY(), entity.getHitbox().getMaxX(), entity.getHitbox().getMaxY(), 0, 0, 43, 45,Color.decode(entity.getColor().getColorCode()));
 	    			}	
 	    		}
 	    		/**
