@@ -2,12 +2,18 @@ package fr.iutvalence.info.dut.m2107;
 
 import org.junit.*;
 import junit.framework.TestCase;
-
+/**
+ * A test unit on the Ship class
+ * @author simon
+ *
+ */
 public class ShipTest extends TestCase {
 	
 	private static final int SIZE=10;
 	Ship ship;
-	
+	/**
+	 * One shit that will change over time
+	 */
 	public ShipTest(){
 		this.ship = new Ship(new Weapon(EasyColor.blue, 10, "Arme"),new Hull(EasyColor.blue, 10, "Bouclier"),new Dot(600, 200),SIZE);
 	}
@@ -49,7 +55,11 @@ public class ShipTest extends TestCase {
 	        
 
 	 }
-	 
+	 /**
+	  * Run all the tests
+	  * 
+	  * @param args
+	  */
 	 public static void main(String[] args){
 		 ShipTest test= new ShipTest();
 		 test.testShipHeal();

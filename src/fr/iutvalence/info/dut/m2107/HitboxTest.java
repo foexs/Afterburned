@@ -2,7 +2,11 @@ package fr.iutvalence.info.dut.m2107;
 
 import org.junit.*;
 import junit.framework.TestCase;
-
+/**
+ * Tests on the Hitbox class
+ * @author simon
+ *
+ */
 public class HitboxTest extends TestCase {
 	private static final Hitbox hitbox1=new Hitbox(10,50,10,50); //A regular hitbox
 	private static final Hitbox hitbox2=new Hitbox(0,0,0,0); //this is only the 0 dot
@@ -53,7 +57,10 @@ public class HitboxTest extends TestCase {
 		assertEquals(true, hitbox1.isIn(hitbox7));
 	}
 	
-	
+	/**
+	 * Do all the tests for the Hitbox class
+	 * @param args
+	 */
 	public static void main(String[] args){
 		 testEquals();
 		 testTouchesX();

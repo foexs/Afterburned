@@ -1,5 +1,10 @@
 package fr.iutvalence.info.dut.m2107;
 
+/**
+ * The menu, where to change game's parameters
+ * @author simon
+ *
+ */
 public class MainMenu {
 	public static final String CONFIG_FILE = "Perso.cfg" ;
 	public WeaponSet ws;
@@ -10,7 +15,6 @@ public class MainMenu {
 	public EnemySet es;
 	public Selection selection;
 	public Environment currentEnvironment;
-	
 	
 	public MainMenu(){
 		/**
@@ -44,8 +48,13 @@ public class MainMenu {
 		
 		this.currentEnvironment=Environment.emptySpace;
 	}
-	
+	/**
+	 * On right key pressed on menu
+	 */
 	public void rightKeyPressed(){
+		/**
+		 * Look at the kind of the selection to choose what to do
+		 */
 		switch(this.selection){
 		case weapon:
 			if (currentWeapon>=ws.weapons.size()-1){
@@ -72,7 +81,13 @@ public class MainMenu {
 		}
 		System.out.println(this.getClass()+" right key pressed");
 	}
+	/**
+	 * On left key pressed on menu
+	 */
 	public void leftKeyPressed(){
+		/**
+		 * Look at the kind of the selection to choose what to do
+		 */
 		switch(this.selection){
 		case weapon:
 			if (this.currentWeapon<=0){
@@ -99,8 +114,13 @@ public class MainMenu {
 		}
 		System.out.println(this.getClass()+" left key pressed");
 	}
-
+	/**
+	 * On down key pressed on menu
+	 */
 	public void downKeyPressed() {
+		/**
+		 * Look at the kind of the selection to choose what to do
+		 */
 		switch(this.selection){
 		case weapon:
 			this.selection=Selection.hull;
@@ -113,7 +133,13 @@ public class MainMenu {
 			break;
 		}
 	}
+	/**
+	 * On up key pressed on menu
+	 */
 	public void upKeyPressed() {
+		/**
+		 * Look at the kind of the selection to choose what to do
+		 */
 		switch(this.selection){
 		case weapon:
 			this.selection=Selection.environment;
@@ -127,10 +153,6 @@ public class MainMenu {
 		}
 	}
 
-	public void enterKeyPressed() {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 }

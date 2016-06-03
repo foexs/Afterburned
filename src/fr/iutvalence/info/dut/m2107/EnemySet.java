@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EnemySet {
-
+	/**
+	 * List where all the available ennemies are
+	 */
 	private List<Enemy> enemies=new LinkedList<Enemy>();
 	
 

@@ -1,5 +1,9 @@
 package fr.iutvalence.info.dut.m2107;
-
+/**
+ * A rectangular area where something is and can be interacted with
+ * @author simon
+ *
+ */
 public class Hitbox {
 
 	private int minX;

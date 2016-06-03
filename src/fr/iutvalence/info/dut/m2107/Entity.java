@@ -1,5 +1,9 @@
 package fr.iutvalence.info.dut.m2107;
-
+/**
+ * Something on the game screen, can  contain an object
+ * @author simon
+ *
+ */
 public class Entity {
 	
 	public static final int DEFAULT_SPEED=50;
@@ -43,55 +47,94 @@ public class Entity {
 
 
 	}
-	
+	/**
+	 * 
+	 * @return size
+	 */
 	public int getSize() {
 		return size;
 	}
-	
+	/**
+	 * 
+	 * @return position
+	 */
 	public Dot getPosition(){
 		return this.position;
 	}
-	
+	/**
+	 * Set the middle position
+	 * @param position
+	 */
 	public void setPosition(Dot position) {
 		this.position = position;
 	}
 	
+	/**
+	 * 
+	 * @return health
+	 */
 	public int getHealth(){
 		return this.health;
 	}
-	
+	/**
+	 * 
+	 * @param heal add health point to the entity, you can add negative values
+	 */
 	public void heal(int heal){
 		this.health=this.health+heal;
 	}
-	
+	/**
+	 * 
+	 * @return Hitbox of the entity, where it actually is
+	 */
 	public Hitbox getHitbox(){
 		return new Hitbox(this.position.getX()-this.size,this.position.getX()+this.size,this.position.getY()-this.size,this.position.getY()+this.size);
 	}
-
+	/**
+	 * 
+	 * @return type of the entity
+	 */
 	public EntityType getType() {
 		return type;
 	}
-
+	/**
+	 * 
+	 * @return the item contained in the entity
+	 */
 	public Item getItem() {
 		return item;
 	}
-
+	/**
+	 * 
+	 * @return the enemy contained in the entity
+	 */
 	public Enemy getEnemy() {
 		return enemy;
 	}
-
+	/**
+	 * @return the angle the entity is flying to and it's 0<=angle<=180
+	 */
 	public int getDirection() {
 		return direction;
 	}
-
+	/**
+	 * Choose where the entity is heading to
+	 * @param direction
+	 */
 	public void setDirection(int direction) {
 		this.direction = direction;
 	}
-
+	/**
+	 * 
+	 * @return speed
+	 */
 	public int getSpeed() {
 		return speed;
 	}
-	
+	/**
+	 * 
+	 * @return color
+	 */
 	public EasyColor getColor(){
 		if (this.type==EntityType.GENERAL)
 			return EasyColor.green;

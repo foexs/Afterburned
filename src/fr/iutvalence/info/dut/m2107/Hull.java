@@ -56,7 +56,10 @@ public class Hull {
 	public EasyColor getHullColor() {
 		return this.hullColor;
 	}
-	
+	/**
+	 * 
+	 * @return path of the image file used to display the hull
+	 */
 	public String getHullPath() {
 		return this.hullPath;
 	}

@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ItemSet {
-
+	/**
+	 * List of usable items in the game
+	 */
 	private List<Item> items=new LinkedList<Item>();
 	
 	private int damageIncrease=0;

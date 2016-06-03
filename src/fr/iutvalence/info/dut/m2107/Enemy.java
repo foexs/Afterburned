@@ -1,5 +1,9 @@
 package fr.iutvalence.info.dut.m2107;
-
+/**
+ * An ennemy that can attack you
+ * @author simon
+ *
+ */
 public class Enemy{
 	
 	
@@ -25,21 +29,38 @@ public class Enemy{
 		this.color=color;
 	}
 	
-	//getters and setters
+	/**
+	 * 
+	 * @return size
+	 */
 	public int getSize() {
 		return size;
 	}
-
+	/**
+	 * 
+	 * @return health
+	 */
 	public int getHealth() {
 		return health;
 	}
+	/**
+	 * 
+	 * @return Hitbox
+	 */
 	public Hitbox getHitbox(){
 		return new Hitbox(-this.size,this.size,-this.size,this.size);
 	}
+	/**
+	 * 
+	 * @return damage they inflict to you
+	 */
 	public int getDamage() {
 		return damage;
 	}
-
+	/**
+	 * 
+	 * @return speed
+	 */
 	public int getSpeed() {
 		return speed;
 	}
