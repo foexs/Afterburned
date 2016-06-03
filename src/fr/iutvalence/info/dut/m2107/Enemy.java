@@ -1,8 +1,16 @@
 package fr.iutvalence.info.dut.m2107;
 
 public class Enemy{
-
+	
+	
+	/**
+	 * Each enemy has a set speed which defines how much tiles they can move after their turn
+	 */
 	private int speed;
+	
+	/**
+	 * The enemy's health
+	 */
 	private int health;
 	private int size;
 	private int damage;
